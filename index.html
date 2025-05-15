@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesionalna izrada sajtova - Web Design Studio specijalizovan za moderne i responzivne veb sajtove">
+    <title>Web Design Studio | Profesionalna izrada sajtova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #0ea5e9; /* Moderan tirkizno-plavi */
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --accent: #f97316; /* Narandžasti akcent */
+            --accent-dark: #ea580c;
+            --dark: #0f172a; /* Tamno plava */
+            --dark-secondary: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* ===== RESET & BASE STYLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        input, textarea {
+            font-family: inherit;
+        }
+        
+        /* ===== UTILITIES ===== */
+        .container {
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        .text-gradient {
+            background-image: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* ===== BUTTONS & INPUTS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.07);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 6px rgba(249, 115, 22, 0.2);
+        }
+        
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(249, 115, 22, 0.2);
+        }
+        
+        .btn-link {
+            background: none;
+            color: var(--primary);
+            padding: 0;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .btn-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .btn-link:hover::after {
+            width: 100%;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            color: var(--dark);
+            transition: var(--transition);
+            background-color: white;
+            font-size: 0.95rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo-dot {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            padding: 2rem 1.5rem;
+            transition: right 0.3s ease;
+            z-index: 1001;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .menu-items {
+            margin-top: 3rem;
+        }
+        
+        .menu-items li {
+            margin-bottom: 1.25rem;
+        }
+        
+        .menu-items a {
+            color: var(--dark);
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+        
+        .menu-items a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .menu-items a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-items a:hover::after {
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .close-menu {
+                display: none;
+            }
+            
+            .menu-items {
+                display: flex;
+                margin-top: 0;
+                align-items: center;
+            }
+            
+            .menu-items li {
+                margin-bottom: 0;
+                margin-left: 2rem;
+            }
+            
+            .menu-items a {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            padding: 8rem 0 5rem;
+            background-color: white;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.1) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-container {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+                gap: 3rem;
+            }
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-content {
+                flex: 1;
+                margin: 0;
+            }
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+            color: var(--dark);
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-subtitle {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+        }
+        
+        .hero-image {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-image {
+                flex: 1;
+                margin-top: 0;
+            }
+        }
+        
+        .hero-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .hero-image:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* ===== CLIENTS SECTION ===== */
+        .clients {
+            padding: 3rem 0;
+            background-color: var(--light);
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .clients-title {
+            font-size: 1rem;
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem 3rem;
+        }
+        
+        .client-logo {
+            opacity: 0.7;
+            transition: var(--transition);
+            height: 2rem;
+            width: auto;
+        }
+        
+        .client-logo:hover {
+            opacity: 1;
+        }
+        
+        /* ===== SECTION TITLES ===== */
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+            margin: 0 -1rem;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            padding: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .slide {
+                flex: 0 0 50%;
+                min-width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .slide {
+                flex: 0 0 33.333%;
+                min-width: 33.333%;
+            }
+        }
+        
+        .portfolio-item {
+            background-color: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img::after {
+            opacity: 1;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.08);
+        }
+        
+        .portfolio-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.35rem 0.75rem;
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 3px;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3);
+        }
+        
+        .portfolio-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+        }
+        
+        .portfolio-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+        
+        .portfolio-link span {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .portfolio-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .portfolio-link:hover span {
+            transform: translateX(4px);
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .slider-btn {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            color: var(--dark);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(14, 165, 233, 0.15);
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 6rem 0;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(14, 165, 233, 0.03);
+            border-radius: 50%;
+            transform: translate(200px, -200px);
+            z-index: 0;
+        }
+        
+        .services::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(249, 115, 22, 0.03);
+            border-radius: 50%;
+            transform: translate(-150px, 150px);
+            z-index: 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem;
+            font-size: 1.75rem;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .service-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* ===== STATS SECTION ===== */
+        .stats {
+            padding: 4rem 0;
+            background: linear-gradient(90deg, var(--dark), var(--dark-secondary));
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 6rem 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.03) 0, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(249, 115, 22, 0.03) 0, transparent 20%);
+            z-index: 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .contact-info {
+            padding: 1rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        .logo{
+            margin-left: 20px;
+        }
+        .contact-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        
+        .contact-text {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-text span {
+            display: block;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .contact-form-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .form-grid .form-group:last-child {
+            grid-column: 1 / -1;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(14, 165, 233, 0.3);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .footer-about h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-about span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-menu {
+            list-style: none;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+        
+        .footer-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(14, 165, 233, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-menu a:hover {
+            color: white;
+            padding-left: 1.5rem;
+        }
+        
+        .footer-menu a:hover::before {
+            background-color: var(--primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Web<span>Kutak</span><span class="logo-dot">.</span></a>
+            
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Otvori meni">☰</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu" aria-label="Zatvori meni">✕</button>
+                <ul class="menu-items">
+                    <li><a href="index.html" class="active">Početna</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="usluge.html">Usluge</a></li>
+                    <li><a href="onama.html">O nama</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content animate-fade-in">
+                <h1 class="hero-title">Kreiramo <span class="text-gradient">digitalna</span> iskustva koja impresioniraju</h1>
+                <p class="hero-subtitle">Specijalizovani smo za dizajn i razvoj modernih, responzivnih i funkcionalnih web rešenja koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">Pogledajte naše radove</a>
+                    <a href="#contact" class="btn btn-secondary">Kontaktirajte nas</a>
+                </div>
+            </div>
+            <div class="hero-image animate-fade-in">
+                <img src="pocetnasl.jpg" alt="Web Design Studio - Kreativni dizajn">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Naši projekti</span>
+                <h2 class="section-title">Pogledajte naše najnovije radove</h2>
+                <p class="section-desc">Donosimo kreativna i inovativna rešenja koja pomažu našim klijentima da postignu svoje ciljeve.</p>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider" id="portfolioSlider">
+                    <!-- Portfolio Item 1 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="E-commerce sajt">
+                                <span class="portfolio-category">E-commerce</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Luxury Shop</h3>
+                                <p>Premium e-commerce platforma za prodaju luksuznih brendova sa naprednim sistemom filtriranja i plaćanja.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 2 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="Korporativni sajt">
+                                <span class="portfolio-category">Korporativni</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Tech Solutions</h3>
+                                <p>Moderan korporativni sajt za IT kompaniju sa interaktivnim elementima i elegantnim animacijama.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 3 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="Restoran sajt">
+                                <span class="portfolio-category">Ugostiteljstvo</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Gusto Italiano</h3>
+                                <p>Elegantni sajt za italijanski restoran sa sistemom online rezervacija i interaktivnim menijem.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 4 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="Blog sajt">
+                                <span class="portfolio-category">Blog</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Travel Explorer</h3>
+                                <p>Dinamičan blog o putovanjima sa naprednim sistemom za filtriranje i personalizovane preporuke.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 5 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="Medicinski sajt">
+                                <span class="portfolio-category">Zdravstvo</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>MediCare</h3>
+                                <p>Medicinski portal sa sistemom za online zakazivanje pregleda i bazom zdravstvenih informacija.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 6 -->
+                    <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="/api/placeholder/600/400" alt="Obrazovni sajt">
+                                <span class="portfolio-category">Edukacija</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>EduLearn</h3>
+                                <p>Moderna obrazovna platforma sa online kursevima, testovima i interaktivnim sadržajem.</p>
+                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="sliderPrev" aria-label="Prethodna stranica">❮</button>
+                    <button class="slider-btn" id="sliderNext" aria-label="Sledeća stranica">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Šta radimo</span>
+                <h2 class="section-title">Usluge koje pružamo</h2>
+                <p class="section-desc">Nudimo kompletna rešenja za vaše digitalne potrebe, od dizajna do implementacije i održavanja.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Web Dizajn</h3>
+                    <p>Kreiramo jedinstvene i privlačne dizajne prilagođene vašem brendu, sa fokusom na korisničko iskustvo i konverzije.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Razvijamo robusne i skalabilne web aplikacije koristeći najnovije tehnologije i najbolje prakse u industriji.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responzivni Dizajn</h3>
+                    <p>Osiguravamo da vaš sajt izgleda i funkcioniše savršeno na svim uređajima, od mobilnih telefona do desktop računara.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimizacija</h3>
+                    <p>Optimizujemo vaš sajt za bolje rangiranje na pretraživačima, povećavajući vašu vidljivost i organski saobraćaj.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Rešenja</h3>
+                    <p>Razvijamo kompletne online prodavnice sa naprednim funkcionalnostima za sigurnu i efikasnu online prodaju.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Održavanje i Podrška</h3>
+                    <p>Pružamo kontinuiranu tehničku podršku i redovno održavanje kako bi vaš sajt uvek radio besprekorno i sigurno.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Kontaktirajte nas</span>
+                <h2 class="section-title">Razgovarajmo o vašem projektu</h2>
+                <p class="section-desc">Imate pitanja ili želite da započnete projekat? Pošaljite nam poruku i odgovorićemo vam u najkraćem roku.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Tu smo za vas</h3>
+                    <p>Naš tim stručnjaka je spreman da odgovori na sva vaša pitanja i pomogne vam u realizaciji vaših digitalnih ideja.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-text">
+                                +382 67 844 223
+                                <span>Pon-Pet: 8:00 - 20:00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-text">
+                                webkutakpg@gmail.com
+                                <span>Pošaljite nam upit bilo kada</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Pošaljite nam poruku</h3>
+                    <p class="contact-form-subtitle">Popunite formular ispod i javićemo vam se u najkraćem roku</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Ime i prezime</label>
+                                <input type="text" id="name" class="form-control" placeholder="Vaše ime i prezime" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email adresa</label>
+                                <input type="email" id="email" class="form-control" placeholder="Vaša email adresa" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Broj telefona</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Vaš broj telefona">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Tema</label>
+                                <select id="subject" class="form-control">
+                                    <option value="" disabled selected>Izaberite temu</option>
+                                    <option value="web-design">Web Dizajn</option>
+                                    <option value="development">Web Development</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="seo">SEO Optimizacija</option>
+                                    <option value="other">Drugo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Poruka</label>
+                                <textarea id="message" class="form-control" placeholder="Opišite vaš projekat ili postavite pitanje" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Pošaljite poruku</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Web<span>Kutak</span><span class="logo-dot">.</span></h3>
+                    <p>Mi smo tim kreativnih profesionalaca posvećenih kreiranju impresivnih digitalnih iskustava koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/webkutak/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="tel:+38267844223" aria-label="Twitter"><i class="fa fa-phone"></i></a>
+                        <a href="mailto:webkutakpg@gmail.com" aria-label="LinkedIn"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigacija</h3>
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="usluge.html">Usluge</a></li>
+                        <li><a href="onama.html">O nama</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Usluge</h3>
+                    <ul class="footer-menu">
+                        <li><a href="usluge.html#web-design">Web Dizajn</a></li>
+                        <li><a href="usluge.html#web-development">Web Development</a></li>
+                        <li><a href="usluge.html#e-commerce">E-commerce</a></li>
+                        <li><a href="usluge.html#seo">SEO Optimizacija</a></li>
+                        <li><a href="usluge.html#maintenance">Održavanje</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-menu">
+                        <li><i class="fas fa-phone"></i> +382 67 844 223</li>
+                        <li><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebKutak</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        var year = (new Date()).getFullYear();
+        document.querySelector(".footer-bottom p") = "&copy;" + year + "WebKutak"
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+        
+        // Portfolio slider functionality
+        const slider = document.getElementById('portfolioSlider');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        // Calculate how many slides to show based on screen width
+        function getSlidesPerView() {
+            if (window.innerWidth >= 1024) {
+                return 3;
+            } else if (window.innerWidth >= 768) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+        
+        function updateSlider() {
+            const slidesPerView = getSlidesPerView();
+            const maxIndex = Math.max(0, slides.length - slidesPerView);
+            
+            if (slideIndex > maxIndex) {
+                slideIndex = maxIndex;
+            }
+            
+            const slideWidth = 100 / slidesPerView;
+            slider.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
+            
+            // Update buttons state
+            prevBtn.disabled = slideIndex === 0;
+            nextBtn.disabled = slideIndex >= maxIndex;
+            
+            // Visual feedback for disabled buttons
+            if (prevBtn.disabled) {
+                prevBtn.style.opacity = "0.5";
+                prevBtn.style.cursor = "not-allowed";
+            } else {
+                prevBtn.style.opacity = "1";
+                prevBtn.style.cursor = "pointer";
+            }
+            
+            if (nextBtn.disabled) {
+                nextBtn.style.opacity = "0.5";
+                nextBtn.style.cursor = "not-allowed";
+            } else {
+                nextBtn.style.opacity = "1";
+                nextBtn.style.cursor = "pointer";
+            }
+        }
+        
+        // Handle button clicks
+        prevBtn.addEventListener('click', () => {
+            if (slideIndex > 0) {
+                slideIndex--;
+                updateSlider();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            const slidesPerView = getSlidesPerView();
+            const maxIndex = slides.length - slidesPerView;
+            if (slideIndex < maxIndex) {
+                slideIndex++;
+                updateSlider();
+            }
+        });
+        
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
+        
+        // Initial update
+        updateSlider();
+        
+        // Form validation and submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if (!name || !email || !message) {
+                    alert('Molimo popunite sva obavezna polja.');
+                    return;
+                }
+                
+                // Here you would typically send the form data to your server
+                // For demo purposes, just show a success message
+                alert('Hvala na poruci! Kontaktiraćemo vas uskoro.');
+                contactForm.reset();
+            });
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    
+                    // Scroll to target with offset for header
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animate elements on scroll (simple implementation)
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item, .stat-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Set initial state for animations
+            document.querySelectorAll('.service-card, .portfolio-item, .stat-item').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Trigger animations on load
+            animateOnScroll();
+        });
+        
+        // Trigger animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

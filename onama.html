@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O nama - Web Kutak - Upoznajte naš tim i saznajte više o našem radu">
+    <title>O nama | Web Kutak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --dark: #0f172a;
+            --dark-secondary: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* ===== RESET & BASE STYLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+        }
+        
+        /* ===== UTILITIES ===== */
+        .container {
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+            max-width: 1280px;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        .text-gradient {
+            background-image: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.07);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+            margin-left: 20px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo-dot {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            padding: 2rem 1.5rem;
+            transition: right 0.3s ease;
+            z-index: 1001;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .menu-items {
+            margin-top: 3rem;
+        }
+        
+        .menu-items li {
+            margin-bottom: 1.25rem;
+        }
+        
+        .menu-items a {
+            color: var(--dark);
+            font-size: 1.125rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+        
+        .menu-items a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .menu-items a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-items a:hover::after {
+            width: 100%;
+        }
+        
+        /* Aktivna stranica */
+        .menu-items a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .menu-items a.active::after {
+            width: 100%;
+            background-color: var(--primary);
+        }
+        
+        @media (min-width: 768px) {
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .close-menu {
+                display: none;
+            }
+            
+            .menu-items {
+                display: flex;
+                margin-top: 0;
+                align-items: center;
+            }
+            
+            .menu-items li {
+                margin-bottom: 0;
+                margin-left: 2rem;
+            }
+            
+            .menu-items a {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+        }
+        
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            position: relative;
+            padding: 8rem 0 3rem;
+            background-color: var(--dark);
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .page-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== ABOUT INTRO SECTION ===== */
+        .about-intro {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .about-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .about-image {
+                flex: 1;
+            }
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.7s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.125rem;
+        }
+        
+        /* ===== MISSION SECTION ===== */
+        .mission-section {
+            padding: 5rem 0;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(14, 165, 233, 0.03);
+            border-radius: 50%;
+            transform: translate(200px, -200px);
+            z-index: 0;
+        }
+        
+        .mission-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(249, 115, 22, 0.03);
+            border-radius: 50%;
+            transform: translate(-150px, 150px);
+            z-index: 0;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .mission-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .mission-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mission-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem;
+            font-size: 1.75rem;
+            transition: var(--transition);
+        }
+        
+        .mission-card:hover .mission-icon {
+            background-color: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .mission-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .mission-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .member-img {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .team-member:hover .member-img img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .member-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            background-color: var(--light);
+            color: var(--gray);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .member-social a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== STATS SECTION ===== */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(90deg, var(--dark), var(--dark-secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== TIMELINE SECTION ===== */
+        .timeline-section {
+            padding: 5rem 0;
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--light-gray);
+        }
+        
+        @media (max-width: 767px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+        
+        .timeline-item {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            margin-bottom: 3rem;
+            width: 50%;
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 30px;
+        }
+        
+        @media (max-width: 767px) {
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+                justify-content: flex-start;
+                padding-left: 45px;
+                padding-right: 0;
+            }
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px white;
+            left: calc(100% - 12px);
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+        
+        @media (max-width: 767px) {
+            .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 8px;
+            }
+        }
+        
+        .timeline-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 350px;
+            transition: var(--transition);
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        
+        .timeline-text {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .testimonial-content {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: -0.5rem;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(14, 165, 233, 0.1);
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            color: var(--gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-company {
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 5rem 0;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .cta-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .footer-about h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-about span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+        
+        .footer-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(14, 165, 233, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-menu a:hover {
+            color: white;
+            padding-left: 1.5rem;
+        }
+        
+        .footer-menu a:hover::before {
+            background-color: var(--primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Web<span>Kutak</span><span class="logo-dot">.</span></a>
+            
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Otvori meni">☰</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu" aria-label="Zatvori meni">✕</button>
+                <ul class="menu-items">
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="usluge.html">Usluge</a></li>
+                    <li><a href="onama.html" class="active">O nama</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image animate-fade-in">
+                    <img src="/api/placeholder/600/400" alt="Web Kutak Tim">
+                </div>
+                <div class="about-text animate-fade-in">
+                    <h2>Naša priča</h2>
+                    <p>Web Kutak je osnovan 2018. godine sa misijom da pomogne biznisima svih veličina da ostvare svoje ciljeve u digitalnom svetu. Od tada smo pomogli stotinama klijenata da kreiraju upečatljivo online prisustvo i povećaju svoj uspeh kroz digitalne kanale.</p>
+                    <p>Naš tim čine strastveni profesionalci koji su posvećeni kreiranju funkcionalnih i estetski privlačnih digitalnih rešenja. Verujemo da dobar dizajn treba da bude jednako funkcionalan koliko i lep, i da tehnologija treba da služi ljudima, a ne obrnuto.</p>
+                    <p>Sa sedištem u Podgorici i klijentima širom regiona, ponosni smo na naš doprinos razvoju digitalnog ekosistema i na poverenje koje su nam ukazali brojni klijenti kroz godine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <!-- Mission Box -->
+                <div class="mission-card animate-fade-in">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Naša misija</h3>
+                    <p>Naša misija je da kreiramo digitalna rešenja koja pomažu našim klijentima da ostvare svoje poslovne ciljeve i istaknu se u digitalnom svetu. Težimo ka tome da svaki projekat bude uspešan, funkcionalan i vizuelno impresivan.</p>
+                </div>
+                
+                <!-- Vision Box -->
+                <div class="mission-card animate-fade-in">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Naša vizija</h3>
+                    <p>Naša vizija je da postanemo vodeća firma za izradu sajtova u regionu, poznat po kreativnim i inovativnim digitalnim rešenjima. Želimo da inspirišemo druge svojim radom i da postavimo nove standarde u industriji.</p>
+                </div>
+                
+                <!-- Values Box -->
+                <div class="mission-card animate-fade-in">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Naše vrednosti</h3>
+                    <p>Naše vrednosti su kvalitet, kreativnost, pouzdanost i fokus na klijenta. Verujemo u etički pristup poslu, kontinuirano učenje i unapređivanje, i u stvaranje dugoročnih odnosa sa našim klijentima.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Naša istorija</span>
+                <h2 class="section-title">Put našeg razvoja</h2>
+                <p class="section-desc">Pratite naš put od osnivanja do danas i saznajte kako smo rasli i razvijali se kroz godine.</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2018</div>
+                        <h3 class="timeline-title">Osnivanje studija</h3>
+                        <p class="timeline-text">Web Kutak je osnovan kao mala agencija sa timom od 3 člana i jasnom vizijom kreiranja funkcionalnih i estetski privlačnih digitalnih rešenja.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2019</div>
+                        <h3 class="timeline-title">Širenje tima</h3>
+                        <p class="timeline-text">Nakon uspešne prve godine, proširili smo tim na 6 stručnjaka i preselili se u veću kancelariju kako bismo mogli da radimo na više projekata istovremeno.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2020</div>
+                        <h3 class="timeline-title">Novi izazovi</h3>
+                        <p class="timeline-text">Uprkos pandemiji, uspeli smo da se prilagodimo radu na daljinu i nastavili da pružamo kvalitetne usluge našim klijentima, čak i proširujući portfolio.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="timeline-title">Regionalno širenje</h3>
+                        <p class="timeline-text">Počeli smo da radimo sa klijentima iz celog regiona i proširili tim na 12 stručnjaka različitih profila kako bismo mogli da ponudimo kompletniju uslugu.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2025</div>
+                        <h3 class="timeline-title">Danas</h3>
+                        <p class="timeline-text">Danas smo prepoznati kao jedan od vodećih web design studija u regionu, sa portfoliom od preko 200 uspešnih projekata i timom koji nastavlja da raste.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <!-- Stat 1 - ZAMENJENA STATISTIKA -->
+                <div class="stat-item animate-fade-in">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Osvojenih nagrada</div>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="stat-item animate-fade-in">
+                    <div class="stat-value">200+</div>
+                    <div class="stat-label">Završenih projekata</div>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="stat-item animate-fade-in">
+                    <div class="stat-value">150+</div>
+                    <div class="stat-label">Zadovoljnih klijenata</div>
+                </div>
+                
+                <!-- Stat 4 - ZAMENJENA STATISTIKA -->
+                <div class="stat-item animate-fade-in">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Lokacija</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Svedočenja</span>
+                <h2 class="section-title">Šta kažu naši klijenti</h2>
+                <p class="section-desc">Ponosni smo na poverenje koje su nam ukazali naši klijenti i na uspeh koji smo zajedno postigli.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card animate-fade-in">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">Web Kutak je prevazišao sva naša očekivanja. Kreativni tim je uspeo da transformiše naše ideje u funkcionalan i privlačan sajt koji savršeno predstavlja naš brend. Oduševljeni smo rezultatima i preporučujemo ih svima!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/100/100" alt="Milica Tomić">
+                        </div>
+                        <div class="author-info">
+                            <h4>Milica Tomić</h4>
+                            <div class="author-company">Direktor marketinga, BeautyLux</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card animate-fade-in">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">Saradnja sa Web Kutkom je bilo izuzetno profesionalno iskustvo. Od prvog sastanka do finalnog proizvoda, uvek su bili tu da odgovore na naša pitanja i prilagode se našim potrebama. Rezultat je sajt koji nam je značajno povećao online prodaju.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/100/100" alt="Stefan Popović">
+                        </div>
+                        <div class="author-info">
+                            <h4>Stefan Popović</h4>
+                            <div class="author-company">Vlasnik, TechGear</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card animate-fade-in">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">Nakon što sam radio sa nekoliko drugih agencija, mogu sa sigurnošću reći da je Web Kutak najbolji. Njihova pažnja prema detaljima i posvećenost kvalitetu su zaista impresivni. Naš novi sajt je doneo značajan porast posećenosti i konverzija.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/100/100" alt="Aleksandra Đurić">
+                        </div>
+                        <div class="author-info">
+                            <h4>Aleksandra Đurić</h4>
+                            <div class="author-company">CEO, FitnessPro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Spremni ste da započnete projekat?</h2>
+                <p class="cta-description">Kontaktirajte nas danas i razgovarajmo o tome kako možemo pomoći vašem biznisu da raste u digitalnom svetu.</p>
+                <div class="cta-buttons">
+                    <a href="kontakt.html" class="btn btn-primary">Kontaktirajte nas</a>
+                    <a href="portfolio.html" class="btn btn-secondary">Pogledajte naše radove</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Web<span>Kutak</span><span class="logo-dot">.</span></h3>
+                    <p>Mi smo tim kreativnih profesionalaca posvećenih kreiranju impresivnih digitalnih iskustava koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/webkutak/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="tel:+38267844223" aria-label="Twitter"><i class="fa fa-phone"></i></a>
+                        <a href="mailto:webkutakpg@gmail.com" aria-label="LinkedIn"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigacija</h3>
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="usluge.html">Usluge</a></li>
+                        <li><a href="onama.html">O nama</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Usluge</h3>
+                    <ul class="footer-menu">
+                        <li><a href="usluge.html#web-design">Web Dizajn</a></li>
+                        <li><a href="usluge.html#web-development">Web Development</a></li>
+                        <li><a href="usluge.html#e-commerce">E-commerce</a></li>
+                        <li><a href="usluge.html#seo">SEO Optimizacija</a></li>
+                        <li><a href="usluge.html#maintenance">Održavanje</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-menu">
+                        <li><i class="fas fa-phone"></i> +382 67 844 223</li>
+                        <li><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebKutak</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+        
+        // Set active navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const menuLinks = document.querySelectorAll('.menu-items a');
+            
+            menuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                if (currentPath.includes(href) && href !== 'index.html') {
+                    menuLinks.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    link.classList.add('active');
+                }
+            });
+            
+            // Animate elements on scroll
+            const animateElements = document.querySelectorAll('.animate-fade-in');
+            
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Set initial state for animations
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Check on load
+            window.addEventListener('load', checkScroll);
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
+</body>
+</html>

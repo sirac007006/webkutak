@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Usluge - Web Kutak - Profesionalne web usluge za vaš biznis">
+    <title>Usluge | Web Kutak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --dark: #0f172a;
+            --dark-secondary: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* ===== RESET & BASE STYLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+        }
+        
+        /* ===== UTILITIES ===== */
+        .container {
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+            max-width: 1280px;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        .text-gradient {
+            background-image: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+            margin-left: 20px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo-dot {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            padding: 2rem 1.5rem;
+            transition: right 0.3s ease;
+            z-index: 1001;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .menu-items {
+            margin-top: 3rem;
+        }
+        
+        .menu-items li {
+            margin-bottom: 1.25rem;
+        }
+        
+        .menu-items a {
+            color: var(--dark);
+            font-size: 1.125rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+        
+        .menu-items a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .menu-items a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-items a:hover::after {
+            width: 100%;
+        }
+        
+        /* Aktivna stranica */
+        .menu-items a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .menu-items a.active::after {
+            width: 100%;
+            background-color: var(--primary);
+        }
+        
+        @media (min-width: 768px) {
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .close-menu {
+                display: none;
+            }
+            
+            .menu-items {
+                display: flex;
+                margin-top: 0;
+                align-items: center;
+            }
+            
+            .menu-items li {
+                margin-bottom: 0;
+                margin-left: 2rem;
+            }
+            
+            .menu-items a {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+        }
+        
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            position: relative;
+            padding: 8rem 0 3rem;
+            background-color: var(--dark);
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .page-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services-section {
+            padding: 10rem 0;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(14, 165, 233, 0.03);
+            border-radius: 50%;
+            transform: translate(200px, -200px);
+            z-index: 0;
+        }
+        
+        .services-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(249, 115, 22, 0.03);
+            border-radius: 50%;
+            transform: translate(-150px, 150px);
+            z-index: 0;
+        }
+        
+        /* Section header */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Service cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem;
+            font-size: 1.75rem;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .service-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card .btn {
+            margin-top: auto;
+        }
+        
+        /* ===== SERVICE DETAILS SECTION ===== */
+        .service-details {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .service-detail-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+        
+        .service-detail-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .service-detail-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 3rem;
+            }
+            
+            .service-detail-item:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+        
+        .service-detail-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .service-detail-img {
+                flex: 1;
+                margin-bottom: 0;
+            }
+        }
+        
+        .service-detail-img img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .service-detail-item:hover .service-detail-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-detail-content {
+            flex: 1;
+        }
+        
+        .service-detail-content h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .service-detail-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .service-detail-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            margin: 1.5rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-text {
+            color: var(--gray);
+        }
+        
+        /* ===== PRICING SECTION ===== */
+        .pricing-section {
+            padding: 5rem 0;
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+        
+        .pricing-card.featured:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1;
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        .pricing-description {
+            color: var(--gray);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-features {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .pricing-feature-icon {
+            color: var(--primary);
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .pricing-feature.disabled {
+            color: var(--gray);
+            opacity: 0.6;
+        }
+        
+        .pricing-feature.disabled .pricing-feature-icon {
+            color: var(--gray);
+        }
+        
+        .pricing-btn {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 5rem 0;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .cta-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .footer-about h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-about span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+        
+        .footer-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(14, 165, 233, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-menu a:hover {
+            color: white;
+            padding-left: 1.5rem;
+        }
+        
+        .footer-menu a:hover::before {
+            background-color: var(--primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Web<span>Kutak</span><span class="logo-dot">.</span></a>
+            
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Otvori meni">☰</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu" aria-label="Zatvori meni">✕</button>
+                <ul class="menu-items">
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="usluge.html" class="active">Usluge</a></li>
+                    <li><a href="onama.html">O nama</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Services Overview Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Usluge koje pružamo</h2>
+                <p class="section-desc">Naš tim stručnjaka je posvećen kreiranju vrhunskih digitalnih rešenja koja će pomoći vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Web Dizajn</h3>
+                    <p>Kreiramo jedinstvene i privlačne dizajne prilagođene vašem brendu, sa fokusom na korisničko iskustvo i konverzije.</p>
+                    <a href="#web-design" class="btn btn-primary">Saznaj više</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Razvijamo robusne i skalabilne web aplikacije koristeći najnovije tehnologije i najbolje prakse u industriji.</p>
+                    <a href="#web-development" class="btn btn-primary">Saznaj više</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responzivni Dizajn</h3>
+                    <p>Osiguravamo da vaš sajt izgleda i funkcioniše savršeno na svim uređajima, od mobilnih telefona do desktop računara.</p>
+                    <a href="#responsive-design" class="btn btn-primary">Saznaj više</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimizacija</h3>
+                    <p>Optimizujemo vaš sajt za bolje rangiranje na pretraživačima, povećavajući vašu vidljivost i organski saobraćaj.</p>
+                    <a href="#seo" class="btn btn-primary">Saznaj više</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Rešenja</h3>
+                    <p>Razvijamo kompletne online prodavnice sa naprednim funkcionalnostima za sigurnu i efikasnu online prodaju.</p>
+                    <a href="#e-commerce" class="btn btn-primary">Saznaj više</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Održavanje i Podrška</h3>
+                    <p>Pružamo kontinuiranu tehničku podršku i redovno održavanje kako bi vaš sajt uvek radio besprekorno i sigurno.</p>
+                    <a href="#maintenance" class="btn btn-primary">Saznaj više</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Service Details Section -->
+    <section class="service-details">
+        <div class="container">
+            <!-- Web Design Service -->
+            <div id="web-design" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="Web Dizajn">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Web Dizajn</span>
+                    <h3>Kreativni i funkcionalni web dizajn</h3>
+                    <p>Naš pristup web dizajnu se fokusira na kombinaciju atraktivnog vizuelnog identiteta i intuitivne funkcionalnosti. Kreiramo jedinstvene dizajne koji odražavaju vaš brend i ostavljaju snažan utisak na posetiocima, istovremeno obezbeđujući lako korišćenje i jasan put do konverzija.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Jedinstveni dizajn prilagođen vašem brendu
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Optimizacija korisničkog iskustva (UX/UI)
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Konverziono orijentisan dizajn
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Moderne tehnike dizajna i trendovi
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+            
+            <!-- Web Development Service -->
+            <div id="web-development" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="Web Development">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Web Development</span>
+                    <h3>Profesionalan i pouzdan web development</h3>
+                    <p>Naš tim iskusnih developera kreira skalabilna i pouzdana web rešenja koristeći najnovije tehnologije i najbolje prakse u industriji. Razvijamo sve vrste web aplikacija, od jednostavnih prezentacionih sajtova do kompleksnih web sistema, sa fokusom na performanse, sigurnost i lako održavanje.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Front-end i back-end development
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Najnovije tehnologije i frameworki
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Optimizacija performansi i brzine sajta
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Sigurnosna zaštita i redovno ažuriranje
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+            
+            <!-- Responsive Design Service -->
+            <div id="responsive-design" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="Responzivni Dizajn">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Responzivni Dizajn</span>
+                    <h3>Sajtovi koji izgledaju savršeno na svim uređajima</h3>
+                    <p>U današnje vreme kada korisnici pristupaju internetu sa raznih uređaja, responzivni dizajn nije više luksuz već neophodnost. Naši sajtovi su projektovani tako da se dinamički prilagođavaju različitim veličinama ekrana, pružajući optimalno korisničko iskustvo bez obzira da li korisnik pristupa sa desktop računara, tableta ili mobilnog telefona.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Prilagođava se svim veličinama ekrana
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Mobile-first pristup dizajnu
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Brzo učitavanje na mobilnim uređajima
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Google mobile-friendly standardi
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+            
+            <!-- SEO Optimization Service -->
+            <div id="seo" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="SEO Optimizacija">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">SEO Optimizacija</span>
+                    <h3>Poboljšajte vidljivost vašeg sajta na pretraživačima</h3>
+                    <p>Naša SEO usluga će pomoći vašem sajtu da se bolje rangira u rezultatima pretraživanja, što će povećati organsku posećenost i dovesti više potencijalnih klijenata na vaš sajt. Koristimo dokazane tehnike optimizacije koje su u skladu sa najnovijim Google algoritmima, kako bismo postigli dugoročne rezultate.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Analiza ključnih reči i konkurencije
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Optimizacija on-page faktora
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Tehnička SEO optimizacija
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Izveštaji i analitika performansi
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+            
+            <!-- E-commerce Service -->
+            <div id="e-commerce" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="E-commerce Rešenja">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">E-commerce</span>
+                    <h3>Prodajte vaše proizvode online</h3>
+                    <p>Naša E-commerce rešenja će vam omogućiti da efikasno prodajete vaše proizvode ili usluge online. Razvijamo kompletne online prodavnice sa svim potrebnim funkcionalnostima za uspešno poslovanje, uključujući sistem plaćanja, upravljanje zalihama, i praćenje porudžbina.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Integracija sistema za plaćanje
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Upravljanje proizvodima i zalihama
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Optimizacija procesa kupovine
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Sigurnosni standardi za e-commerce
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+            
+            <!-- Maintenance Service -->
+            <div id="maintenance" class="service-detail-item">
+                <div class="service-detail-img">
+                    <img src="/api/placeholder/600/400" alt="Održavanje i Podrška">
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Održavanje</span>
+                    <h3>Kontinuirano održavanje i tehnička podrška</h3>
+                    <p>Naša usluga održavanja i tehničke podrške osigurava da vaš sajt uvek radi besprekorno i sigurno. Nudimo redovno održavanje, ažuriranje softvera, sigurnosne provere, backup podataka i brzu reakciju na eventualne probleme, kako biste vi mogli da se fokusirate na svoje poslovanje.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Redovno ažuriranje softvera
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Sigurnosne provere i zaštita
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Backup podataka i brz oporavak
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">
+                                Tehnička podrška i brza reakcija
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary">Zatražite ponudu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Cenovnik</span>
+                <h2 class="section-title">Paketi usluga</h2>
+                <p class="section-desc">Izaberite paket koji najbolje odgovara vašim potrebama ili nas kontaktirajte za customizovano rešenje.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Basic Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Basic</h3>
+                        <div class="pricing-price">599€ <span>/ jednokratno</span></div>
+                        <p class="pricing-description">Idealno za male biznise i startape koji traže profesionalnu web prezentaciju.</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Responzivni web dizajn</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Do 5 stranica</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Osnovna SEO optimizacija</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Kontakt forma</div>
+                        </div>
+                        <div class="pricing-feature disabled">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>E-commerce funkcionalnosti</div>
+                        </div>
+                        <div class="pricing-feature disabled">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>CMS sistem</div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary pricing-btn">Zatražite ponudu</a>
+                </div>
+                
+                <!-- Professional Package -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Najpopularnije</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Professional</h3>
+                        <div class="pricing-price">1299€ <span>/ jednokratno</span></div>
+                        <p class="pricing-description">Savršeno za rastuće biznise koji traže napredno web prisustvo.</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Premium responzivni dizajn</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Do 15 stranica</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Napredna SEO optimizacija</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>CMS sistem</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Blog sekcija</div>
+                        </div>
+                        <div class="pricing-feature disabled">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>E-commerce funkcionalnosti</div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary pricing-btn">Zatražite ponudu</a>
+                </div>
+                
+                <!-- Enterprise Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Enterprise</h3>
+                        <div class="pricing-price">2499€ <span>/ jednokratno</span></div>
+                        <p class="pricing-description">Kompletno rešenje za velike biznise i online prodavnice.</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Custom dizajn visokog kvaliteta</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Neograničen broj stranica</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>E-commerce funkcionalnosti</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Napredni CMS sistem</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Blog & Newsletter</div>
+                        </div>
+                        <div class="pricing-feature">
+                            <div class="pricing-feature-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>Napredna sigurnosna zaštita</div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontakt.html" class="btn btn-primary pricing-btn">Zatražite ponudu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Spremni ste da pokrenete vaš projekat?</h2>
+                <p class="cta-description">Kontaktirajte nas danas da razgovaramo o vašim potrebama i pronađemo najbolje rešenje za vaš biznis.</p>
+                <div class="cta-buttons">
+                    <a href="kontakt.html" class="btn btn-primary">Kontaktirajte nas</a>
+                    <a href="portfolio.html" class="btn btn-secondary">Pogledajte naše radove</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Web<span>Kutak</span><span class="logo-dot">.</span></h3>
+                    <p>Mi smo tim kreativnih profesionalaca posvećenih kreiranju impresivnih digitalnih iskustava koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/webkutak/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="tel:+38267844223" aria-label="Twitter"><i class="fa fa-phone"></i></a>
+                        <a href="mailto:webkutakpg@gmail.com" aria-label="LinkedIn"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigacija</h3>
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="usluge.html">Usluge</a></li>
+                        <li><a href="onama.html">O nama</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Usluge</h3>
+                    <ul class="footer-menu">
+                        <li><a href="usluge.html#web-design">Web Dizajn</a></li>
+                        <li><a href="usluge.html#web-development">Web Development</a></li>
+                        <li><a href="usluge.html#e-commerce">E-commerce</a></li>
+                        <li><a href="usluge.html#seo">SEO Optimizacija</a></li>
+                        <li><a href="usluge.html#maintenance">Održavanje</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-menu">
+                        <li><i class="fas fa-phone"></i> +382 67 844 223</li>
+                        <li><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebKutak</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+        
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set active navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const menuLinks = document.querySelectorAll('.menu-items a');
+            
+            menuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                if (currentPath.includes(href) && href !== 'index.html') {
+                    menuLinks.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

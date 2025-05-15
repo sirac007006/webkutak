@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio - Web Kutak - Pogledajte naše najnovije projekte i radove">
+    <title>Portfolio | Web Kutak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --dark: #0f172a;
+            --dark-secondary: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* ===== RESET & BASE STYLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+        }
+        
+        /* ===== UTILITIES ===== */
+        .container {
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+            max-width: 1280px;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        .text-gradient {
+            background-image: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+            margin-left: 20px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo-dot {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            padding: 2rem 1.5rem;
+            transition: right 0.3s ease;
+            z-index: 1001;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .menu-items {
+            margin-top: 3rem;
+        }
+        
+        .menu-items li {
+            margin-bottom: 1.25rem;
+        }
+        
+        .menu-items a {
+            color: var(--dark);
+            font-size: 1.125rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+        
+        .menu-items a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .menu-items a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-items a:hover::after {
+            width: 100%;
+        }
+        
+        /* Aktivna stranica */
+        .menu-items a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .menu-items a.active::after {
+            width: 100%;
+            background-color: var(--primary);
+        }
+        
+        @media (min-width: 768px) {
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .close-menu {
+                display: none;
+            }
+            
+            .menu-items {
+                display: flex;
+                margin-top: 0;
+                align-items: center;
+            }
+            
+            .menu-items li {
+                margin-bottom: 0;
+                margin-left: 2rem;
+            }
+            
+            .menu-items a {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+        }
+        
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            position: relative;
+            padding: 8rem 0 3rem;
+            background-color: var(--dark);
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
+            z-index: 0;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .page-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== PORTFOLIO GRID ===== */
+        .portfolio-section {
+            padding: 8rem 0;
+            background-color: var(--light);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-button {
+            padding: 0.5rem 1.25rem;
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 50px;
+            color: var(--gray);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .filter-button:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-button.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 640px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .portfolio-item {
+            background-color: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img::after {
+            opacity: 1;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.08);
+        }
+        
+        .portfolio-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.35rem 0.75rem;
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 3px;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3);
+        }
+        
+        .portfolio-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+        }
+        
+        .portfolio-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+        
+        .portfolio-link span {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .portfolio-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .portfolio-link:hover span {
+            transform: translateX(4px);
+        }
+        
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+        
+        .page-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--gray);
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .page-link:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .page-link.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* ===== MODAL ===== */
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark);
+        }
+        
+        .modal-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-category {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .modal-image {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .modal-image img {
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-details h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-details p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .project-info {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin-top: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--dark);
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: var(--gray);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+        
+        .footer-about h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-about span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-menu a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+        
+        .footer-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: rgba(14, 165, 233, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-menu a:hover {
+            color: white;
+            padding-left: 1.5rem;
+        }
+        
+        .footer-menu a:hover::before {
+            background-color: var(--primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Web<span>Kutak</span><span class="logo-dot">.</span></a>
+            
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Otvori meni">☰</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu" aria-label="Zatvori meni">✕</button>
+                <ul class="menu-items">
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="usluge.html">Usluge</a></li>
+                    <li><a href="onama.html">O nama</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-button active" data-filter="all">Svi projekti</button>
+                <button class="filter-button" data-filter="web-design">Web Dizajn</button>
+                <button class="filter-button" data-filter="e-commerce">E-commerce</button>
+                <button class="filter-button" data-filter="corporate">Korporativni</button>
+                <button class="filter-button" data-filter="blog">Blog</button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="e-commerce">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="Luxury Shop E-commerce Website">
+                        <span class="portfolio-category">E-commerce</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Luxury Shop</h3>
+                        <p>Premium e-commerce platforma za prodaju luksuznih brendova sa naprednim sistemom filtriranja i plaćanja.</p>
+                        <a href="#" class="portfolio-link" data-modal="project1">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item" data-category="corporate">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="Tech Solutions Corporate Website">
+                        <span class="portfolio-category">Korporativni</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tech Solutions</h3>
+                        <p>Moderan korporativni sajt za IT kompaniju sa interaktivnim elementima i elegantnim animacijama.</p>
+                        <a href="#" class="portfolio-link" data-modal="project2">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item" data-category="web-design">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="Gusto Italiano Restaurant Website">
+                        <span class="portfolio-category">Ugostiteljstvo</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Gusto Italiano</h3>
+                        <p>Elegantni sajt za italijanski restoran sa sistemom online rezervacija i interaktivnim menijem.</p>
+                        <a href="#" class="portfolio-link" data-modal="project3">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item" data-category="blog">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="Travel Explorer Blog">
+                        <span class="portfolio-category">Blog</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Travel Explorer</h3>
+                        <p>Dinamičan blog o putovanjima sa naprednim sistemom za filtriranje i personalizovane preporuke.</p>
+                        <a href="#" class="portfolio-link" data-modal="project4">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item" data-category="web-design">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="MediCare Medical Portal">
+                        <span class="portfolio-category">Zdravstvo</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>MediCare</h3>
+                        <p>Medicinski portal sa sistemom za online zakazivanje pregleda i bazom zdravstvenih informacija.</p>
+                        <a href="#" class="portfolio-link" data-modal="project5">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="web-design">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="EduLearn Educational Platform">
+                        <span class="portfolio-category">Edukacija</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>EduLearn</h3>
+                        <p>Moderna obrazovna platforma sa online kursevima, testovima i interaktivnim sadržajem.</p>
+                        <a href="#" class="portfolio-link" data-modal="project6">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 7 -->
+                <div class="portfolio-item" data-category="e-commerce">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="FreshMarket Online Groceries">
+                        <span class="portfolio-category">E-commerce</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>FreshMarket</h3>
+                        <p>Online prodavnica prehrambenih proizvoda sa sistemom brze dostave i pretplatom za redovne porudžbine.</p>
+                        <a href="#" class="portfolio-link" data-modal="project7">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 8 -->
+                <div class="portfolio-item" data-category="corporate">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="ArchStudio Architecture Portfolio">
+                        <span class="portfolio-category">Korporativni</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>ArchStudio</h3>
+                        <p>Portfolio sajt za arhitektonski studio sa 3D vizualizacijama i interaktivnim prikazom projekata.</p>
+                        <a href="#" class="portfolio-link" data-modal="project8">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 9 -->
+                <div class="portfolio-item" data-category="blog">
+                    <div class="portfolio-img">
+                        <img src="/api/placeholder/600/400" alt="TechNews Technology Blog">
+                        <span class="portfolio-category">Blog</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>TechNews</h3>
+                        <p>Blog o tehnologiji sa najnovijim vestima iz IT sveta, recenzijama proizvoda i detaljnim analizama.</p>
+                        <a href="#" class="portfolio-link" data-modal="project9">Pogledajte projekat <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">→</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Modal -->
+    <div id="project1Modal" class="portfolio-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Luxury Shop</h2>
+                <span class="modal-category">E-commerce</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="/api/placeholder/800/600" alt="Luxury Shop E-commerce Website">
+                </div>
+                <div class="modal-details">
+                    <h3>O projektu</h3>
+                    <p>Luxury Shop je premium e-commerce platforma razvijena za prodaju luksuznih modnih brendova. Cilj projekta je bio stvoriti elegantno i intuitivno korisničko iskustvo koje odražava visokokvalitetne proizvode koje prodaju.</p>
+                    <p>Platforma uključuje napredni sistem filtriranja, personalizovane preporuke bazirane na prethodnim kupovinama i integrisani sistem plaćanja sa više opcija.</p>
+                    
+                    <div class="project-info">
+                        <div class="info-item">
+                            <div class="info-label">Klijent:</div>
+                            <div class="info-value">Luxury Retail Group</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Datum:</div>
+                            <div class="info-value">Januar 2025.</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Usluge:</div>
+                            <div class="info-value">UI/UX Dizajn, Web Development, E-commerce</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Tehnologije:</div>
+                            <div class="info-value">React, Node.js, Stripe API, MongoDB</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary" style="margin-top: 2rem;">Posetite sajt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Web<span>Kutak</span><span class="logo-dot">.</span></h3>
+                    <p>Mi smo tim kreativnih profesionalaca posvećenih kreiranju impresivnih digitalnih iskustava koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/webkutak/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="tel:+38267844223" aria-label="Twitter"><i class="fa fa-phone"></i></a>
+                        <a href="mailto:webkutakpg@gmail.com" aria-label="LinkedIn"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigacija</h3>
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="usluge.html">Usluge</a></li>
+                        <li><a href="onama.html">O nama</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Usluge</h3>
+                    <ul class="footer-menu">
+                        <li><a href="usluge.html#web-design">Web Dizajn</a></li>
+                        <li><a href="usluge.html#web-development">Web Development</a></li>
+                        <li><a href="usluge.html#e-commerce">E-commerce</a></li>
+                        <li><a href="usluge.html#seo">SEO Optimizacija</a></li>
+                        <li><a href="usluge.html#maintenance">Održavanje</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-menu">
+                        <li><i class="fas fa-phone"></i> +382 67 844 223</li>
+                        <li><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebKutak</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+        
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get filter value
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Portfolio modal
+        const projectLinks = document.querySelectorAll('.portfolio-link[data-modal]');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        
+        // Open modal
+        projectLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = link.getAttribute('data-modal');
+                const modal = document.getElementById(`${projectId}Modal`);
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent body scrolling
+                }
+            });
+        });
+        
+        // Close modal on X button click
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.portfolio-modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Allow body scrolling again
+            });
+        });
+        
+        // Close modal on click outside content
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('portfolio-modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Set active navigation item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const menuLinks = document.querySelectorAll('.menu-items a');
+            
+            menuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                if (currentPath.includes(href) && href !== 'index.html') {
+                    menuLinks.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
