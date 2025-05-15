@@ -1027,7 +1027,7 @@
             margin-bottom: 2rem;
         }
         
-        .form-grid {
+        form-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
@@ -1262,9 +1262,9 @@
                                 <span class="portfolio-category">E-commerce</span>
                             </div>
                             <div class="portfolio-content">
-                                <h3>Luxury Shop</h3>
-                                <p>Premium e-commerce platforma za prodaju luksuznih brendova sa naprednim sistemom filtriranja i plaćanja.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                                <h3>Mazor</h3>
+                                <p>Premium e-commerce platforma za prodaju bijele i ostale tegnike sa naprednim sistemom filtriranja i plaćanja.</p>
+                                <a href="https://mazor.com" class="portfolio-link">Pogledajte projekat <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -1273,13 +1273,13 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="Korporativni sajt">
-                                <span class="portfolio-category">Korporativni</span>
+                                <img src="noahsark.jpg" alt="Korporativni sajt">
+                                <span class="portfolio-category">Tour Booking</span>
                             </div>
                             <div class="portfolio-content">
-                                <h3>Tech Solutions</h3>
-                                <p>Moderan korporativni sajt za IT kompaniju sa interaktivnim elementima i elegantnim animacijama.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                                <h3>Noah's ark Skadar Lake</h3>
+                                <p>Moderan rezervacioni sajt za iznajmljivanje barki i tura oko jezera.</p>
+                                <a href="https://noahsarkskadarlake.com/" class="portfolio-link">Pogledajte projekat <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -1288,13 +1288,13 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="Restoran sajt">
-                                <span class="portfolio-category">Ugostiteljstvo</span>
+                                <img src="" alt="Elite Ride">
+                                <span class="portfolio-category">Limo Service</span>
                             </div>
                             <div class="portfolio-content">
-                                <h3>Gusto Italiano</h3>
-                                <p>Elegantni sajt za italijanski restoran sa sistemom online rezervacija i interaktivnim menijem.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                                <h3>Elite Ride</h3>
+                                <p>Elegantni sajt za luksuzni limo servis.</p>
+                                <a href="https://eliteride.me" class="portfolio-link">Pogledajte projekat <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -1304,12 +1304,12 @@
                         <div class="portfolio-item">
                             <div class="portfolio-img">
                                 <img src="/api/placeholder/600/400" alt="Blog sajt">
-                                <span class="portfolio-category">Blog</span>
+                                <span class="portfolio-category">Vinarija</span>
                             </div>
                             <div class="portfolio-content">
-                                <h3>Travel Explorer</h3>
-                                <p>Dinamičan blog o putovanjima sa naprednim sistemom za filtriranje i personalizovane preporuke.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                                <h3>Vinarija Bojanović</h3>
+                                <p>Moderan sajt koji služi za rezervacije i pregled proizvoda Vinarije Bojanović.</p>
+                                <a href="https://vinarijabojanovic.com" class="portfolio-link">Pogledajte projekat <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -1319,27 +1319,12 @@
                         <div class="portfolio-item">
                             <div class="portfolio-img">
                                 <img src="/api/placeholder/600/400" alt="Medicinski sajt">
-                                <span class="portfolio-category">Zdravstvo</span>
+                                <span class="portfolio-category">Kompanija za čišćenje</span>
                             </div>
                             <div class="portfolio-content">
-                                <h3>MediCare</h3>
-                                <p>Medicinski portal sa sistemom za online zakazivanje pregleda i bazom zdravstvenih informacija.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Portfolio Item 6 -->
-                    <div class="slide">
-                        <div class="portfolio-item">
-                            <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="Obrazovni sajt">
-                                <span class="portfolio-category">Edukacija</span>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>EduLearn</h3>
-                                <p>Moderna obrazovna platforma sa online kursevima, testovima i interaktivnim sadržajem.</p>
-                                <a href="#" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                                <h3>Maya's cleaning</h3>
+                                <p>Korporativni sajt za rezervaciju higijenskih usluga i pregled usluga.</p>
+                                <a href="https://mayascleaning.org" class="portfolio-link">Pogledajte projekat <span>→</span></a>
                             </div>
                         </div>
                     </div>
@@ -1553,8 +1538,11 @@
     
     <!-- JavaScript -->
     <script>
+        // Get current year for footer copyright
         var year = (new Date()).getFullYear();
-        document.querySelector(".footer-bottom p") = "&copy;" + year + "WebKutak"
+        document.querySelector(".footer-bottom p").innerHTML = "&copy; " + year + " WebKutak";
+        
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -1729,4 +1717,3 @@
         window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
-</html>
