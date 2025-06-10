@@ -7,6 +7,7 @@
     <title>Web Design Studio | Profesionalna izrada sajtova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <style>
         /* ===== VARIABLES ===== */
         :root {
@@ -1258,7 +1259,7 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="E-commerce sajt">
+                                <img src="mazor.png" alt="E-commerce sajt">
                                 <span class="portfolio-category">E-commerce</span>
                             </div>
                             <div class="portfolio-content">
@@ -1268,8 +1269,21 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="slide">
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="mtt.png" alt="Borilacke vestine">
+                                <span class="portfolio-category">Klub borilačkih veština</span>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3>Montenegro Top Team</h3>
+                                <p>Sajt za profesionalnu BJJ akademiju i borilački centar sa fokusom na vrhunski trening, takmičenja i razvoj svih uzrasta u brazilskom džiu-džicuu i MMA sportovima.</p>
+                                <a href="https://montenegrotopteam.com" class="portfolio-link">Pogledajte projekat <span>→</span></a>
+                            </div>
+                        </div>
+                    </div> -->
                     
-                    <!-- Portfolio Item 2 -->
+
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
@@ -1288,7 +1302,7 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="" alt="Elite Ride">
+                                <img src="eliteride.png" alt="Elite Ride">
                                 <span class="portfolio-category">Limo Service</span>
                             </div>
                             <div class="portfolio-content">
@@ -1303,7 +1317,7 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="Blog sajt">
+                                <img src="vinarijabojanovic.png" alt="Blog sajt">
                                 <span class="portfolio-category">Vinarija</span>
                             </div>
                             <div class="portfolio-content">
@@ -1318,7 +1332,7 @@
                     <div class="slide">
                         <div class="portfolio-item">
                             <div class="portfolio-img">
-                                <img src="/api/placeholder/600/400" alt="Medicinski sajt">
+                                <img src="mayascleaning.png" alt="Kompanija za čišćenje">
                                 <span class="portfolio-category">Kompanija za čišćenje</span>
                             </div>
                             <div class="portfolio-content">
@@ -1443,7 +1457,7 @@
                     <h3>Pošaljite nam poruku</h3>
                     <p class="contact-form-subtitle">Popunite formular ispod i javićemo vam se u najkraćem roku</p>
                     
-                    <form id="contactForm">
+                    <form id="contactForm" action="mailto:webkutakpg@gmail.com" method="post" enctype="text/plain">
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="name" class="form-label">Ime i prezime</label>
@@ -1640,28 +1654,6 @@
         // Initial update
         updateSlider();
         
-        // Form validation and submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Simple form validation
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                if (!name || !email || !message) {
-                    alert('Molimo popunite sva obavezna polja.');
-                    return;
-                }
-                
-                // Here you would typically send the form data to your server
-                // For demo purposes, just show a success message
-                alert('Hvala na poruci! Kontaktiraćemo vas uskoro.');
-                contactForm.reset();
-            });
-        }
         
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
