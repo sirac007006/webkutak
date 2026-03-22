@@ -3,1126 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kontakt - Web Kutak - Stupite u kontakt sa nama za sva pitanja i informacije">
-    <title>Kontakt | Web Kutak</title>
+    <title>Kontakt | WebKutak</title>
+    <meta name="description" content="Kontaktirajte WebKutak - Razgovarajmo o vašem projektu.">
     <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES ===== */
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --accent: #f97316;
-            --dark: #0f172a;
-            --dark-secondary: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --radius-sm: 0.375rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        /* ===== RESET & BASE STYLES ===== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-size: 16px;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        ul {
-            list-style: none;
-        }
-        
-        button {
-            cursor: pointer;
-            font-family: inherit;
-            border: none;
-        }
-        
-        input, textarea, select {
-            font-family: inherit;
-            outline: none;
-        }
-        
-        /* ===== UTILITIES ===== */
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            padding: 0 1.5rem;
-            margin: 0 auto;
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-            }
-        }
-        
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
-            }
-        }
-        
-        .text-gradient {
-            background-image: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            transition: var(--transition);
-            font-size: 0.95rem;
-            line-height: 1;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(14, 165, 233, 0.2);
-        }
-        
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        header.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.5px;
-            margin-left: 20px;
-        }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
-        .logo-dot {
-            color: var(--accent);
-        }
-        
-        .mobile-menu-btn {
-            display: block;
-            background: none;
-            color: var(--dark);
-            font-size: 1.5rem;
-            line-height: 1;
-            padding: 0.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-        
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background-color: white;
-            padding: 2rem 1.5rem;
-            transition: right 0.3s ease;
-            z-index: 1001;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-menu.active {
-            right: 0;
-        }
-        
-        .close-menu {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            font-size: 1.25rem;
-            color: var(--dark);
-        }
-        
-        .menu-items {
-            margin-top: 3rem;
-        }
-        
-        .menu-items li {
-            margin-bottom: 1.25rem;
-        }
-        
-        .menu-items a {
-            color: var(--dark);
-            font-size: 1.125rem;
-            font-weight: 500;
-            position: relative;
-            padding: 0.25rem 0;
-        }
-        
-        .menu-items a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-        
-        .menu-items a:hover {
-            color: var(--primary);
-        }
-        
-        .menu-items a:hover::after {
-            width: 100%;
-        }
-        
-        .menu-items a.active {
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .menu-items a.active::after {
-            width: 100%;
-            background-color: var(--primary);
-        }
-        
-        @media (min-width: 768px) {
-            .nav-menu {
-                position: static;
-                width: auto;
-                height: auto;
-                padding: 0;
-                background-color: transparent;
-                box-shadow: none;
-                max-width: none;
-            }
-            
-            .close-menu {
-                display: none;
-            }
-            
-            .menu-items {
-                display: flex;
-                margin-top: 0;
-                align-items: center;
-            }
-            
-            .menu-items li {
-                margin-bottom: 0;
-                margin-left: 2rem;
-            }
-            
-            .menu-items a {
-                font-size: 0.95rem;
-                padding: 0.5rem 0;
-            }
-        }
-        
-        /* ===== PAGE HEADER ===== */
-        .page-header {
-            position: relative;
-            padding: 8rem 0 3rem;
-            background-color: var(--dark);
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.2) 0, transparent 35%),
-                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.1) 0, transparent 35%);
-            z-index: 0;
-        }
-        
-        .page-header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .page-title {
-            font-size: 2.75rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -0.025em;
-        }
-        
-        .page-description {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
-            padding: 10rem 0;
-            background-color: white;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-        
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .contact-info {
-            padding: 1rem;
-        }
-        
-        .contact-info h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .contact-info p {
-            color: var(--gray);
-            margin-bottom: 2.5rem;
-            font-size: 1.125rem;
-            line-height: 1.7;
-        }
-        
-        .contact-details {
-            list-style: none;
-        }
-        
-        .contact-details li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .contact-icon {
-            flex-shrink: 0;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: rgba(14, 165, 233, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-size: 1rem;
-        }
-        
-        .contact-text {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .contact-text span {
-            display: block;
-            color: var(--gray);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: var(--light);
-            color: var(--gray);
-            border-radius: 50%;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-        
-        .social-link:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--light-gray);
-        }
-        
-        .contact-form h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            text-align: center;
-        }
-        
-        .contact-form-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        @media (min-width: 640px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .form-grid .form-group:last-child {
-            grid-column: 1 / -1;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark);
-            font-size: 0.95rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--radius-sm);
-            color: var(--dark);
-            transition: var(--transition);
-            background-color: white;
-            font-size: 0.95rem;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
-        }
-        
-        .btn-submit:hover {
-            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(14, 165, 233, 0.3);
-        }
-        
-        /* ===== MAP SECTION ===== */
-        .map-section {
-            padding: 5rem 0;
-            background-color: var(--light);
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-        
-        .section-tag {
-            display: inline-block;
-            padding: 0.35rem 1rem;
-            background-color: rgba(14, 165, 233, 0.1);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 1.25rem;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-        }
-        
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-        
-        .section-desc {
-            font-size: 1.125rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .map-container {
-            width: 100%;
-            height: 450px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        
-        /* ===== FAQ SECTION ===== */
-        .faq-section {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        .faq-item:hover {
-            box-shadow: var(--shadow-md);
-        }
-        
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--dark);
-            transition: var(--transition);
-        }
-        
-        .faq-question:hover {
-            color: var(--primary);
-        }
-        
-        .faq-icon {
-            transition: var(--transition);
-            font-size: 1.25rem;
-            color: var(--primary);
-        }
-        
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: var(--gray);
-            padding: 0 1.5rem;
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 300px;
-            padding-bottom: 1.5rem;
-        }
-        
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 5rem 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        @media (min-width: 640px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr 1fr;
-            }
-        }
-        
-        .footer-about h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: white;
-            letter-spacing: -0.5px;
-        }
-        
-        .footer-about span {
-            color: var(--primary);
-        }
-        
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-        
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.75rem;
-            height: 2.75rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: white;
-            border-radius: 50%;
-        }
-        
-        .footer-social a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-links h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .footer-menu li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-menu a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            position: relative;
-            padding-left: 1.25rem;
-        }
-        
-        .footer-menu a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background-color: rgba(14, 165, 233, 0.5);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .footer-menu a:hover {
-            color: white;
-            padding-left: 1.5rem;
-        }
-        
-        .footer-menu a:hover::before {
-            background-color: var(--primary);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        /* Alert messages */
-        .alert {
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            margin-bottom: 1.5rem;
-            display: none;
-        }
-        
-        .alert-success {
-            background-color: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: rgb(6, 95, 70);
-        }
-        
-        .alert-error {
-            background-color: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: rgb(153, 27, 27);
-        }
+        :root{--bg-primary:#0a0e1a;--bg-secondary:#0f1629;--bg-card:#131a2e;--bg-card-hover:#182040;--blue-primary:#4a7bff;--blue-light:#6b9aff;--blue-glow:rgba(74,123,255,0.15);--blue-glow-strong:rgba(74,123,255,0.3);--cyan:#38bdf8;--text-primary:#e8ecf4;--text-secondary:#8892a8;--text-muted:#5a6478;--border:rgba(255,255,255,0.06);--border-hover:rgba(74,123,255,0.3);--font-display:'Sora',sans-serif;--font-body:'DM Sans',sans-serif}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit;transition:all .3s ease}ul{list-style:none}img{max-width:100%;height:auto;display:block}button{cursor:pointer;font-family:inherit;border:none;background:none}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+        header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 0;transition:all .4s ease}header.scrolled{background:rgba(10,14,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 0}.header-inner{display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:.6rem}.logo img{height:100px;width:auto}.nav-desktop{display:none}@media(min-width:768px){.nav-desktop{display:flex;align-items:center;gap:2.5rem}}.nav-desktop a{font-family:var(--font-display);font-size:.875rem;font-weight:500;color:var(--text-secondary);letter-spacing:.3px;position:relative;padding:.25rem 0}.nav-desktop a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--blue-primary);transition:width .3s ease}.nav-desktop a:hover,.nav-desktop a.active{color:var(--text-primary)}.nav-desktop a:hover::after,.nav-desktop a.active::after{width:100%}.nav-cta{display:none}@media(min-width:768px){.nav-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.25rem;background:var(--blue-primary);color:#fff;border-radius:8px;font-family:var(--font-display);font-size:.85rem;font-weight:600;transition:all .3s ease}.nav-cta:hover{background:var(--blue-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(74,123,255,0.3)}}.mobile-toggle{display:flex;flex-direction:column;gap:5px;padding:.5rem}@media(min-width:768px){.mobile-toggle{display:none}}.mobile-toggle span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px}.mobile-menu{position:fixed;top:0;right:-100%;width:85%;max-width:360px;height:100vh;background:var(--bg-secondary);border-left:1px solid var(--border);padding:2rem;z-index:1002;transition:right .4s cubic-bezier(.4,0,.2,1)}.mobile-menu.open{right:0}.mobile-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1001;opacity:0;pointer-events:none;transition:opacity .3s ease}.mobile-overlay.open{opacity:1;pointer-events:all}.mobile-close{position:absolute;top:1.5rem;right:1.5rem;color:var(--text-secondary);font-size:1.5rem}.mobile-menu-nav{margin-top:4rem;display:flex;flex-direction:column;gap:.5rem}.mobile-menu-nav a{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--text-secondary);padding:.75rem 1rem;border-radius:8px}.mobile-menu-nav a:hover,.mobile-menu-nav a.active{color:var(--text-primary);background:var(--blue-glow)}.mobile-menu-cta{margin-top:2rem;display:block;text-align:center;padding:.85rem 1.5rem;background:var(--blue-primary);color:#fff;border-radius:8px;font-family:var(--font-display);font-size:.95rem;font-weight:600}
+
+        .page-hero{padding:10rem 0 4rem;position:relative;overflow:hidden}.page-hero::before{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--blue-glow-strong) 0%,transparent 70%);border-radius:50%}.section-label{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.8rem;font-weight:600;color:var(--blue-primary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem}.section-label::before{content:'';width:20px;height:2px;background:var(--blue-primary);border-radius:2px}.page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.25rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;position:relative}.gradient{background:linear-gradient(135deg,var(--blue-primary),var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.page-hero p{font-size:1.1rem;color:var(--text-secondary);max-width:560px;line-height:1.7;position:relative}
+
+        .section{padding:5rem 0}
+
+        /* Contact grid */
+        .contact-grid{display:grid;grid-template-columns:1fr;gap:3rem}@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1.25fr}}
+
+        /* Contact info cards */
+        .contact-cards{display:flex;flex-direction:column;gap:1.25rem}
+        .c-card{display:flex;align-items:flex-start;gap:1.25rem;padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;transition:all .3s ease}.c-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+        .c-card-icon{width:48px;height:48px;min-width:48px;display:flex;align-items:center;justify-content:center;background:var(--blue-glow);border:1px solid rgba(74,123,255,0.15);border-radius:12px;color:var(--blue-primary);font-size:1.1rem}
+        .c-card h3{font-family:var(--font-display);font-size:.95rem;font-weight:700;margin-bottom:.25rem}.c-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.6}.c-card a{color:var(--blue-primary);font-weight:500}
+
+        .social-row{display:flex;gap:.75rem;margin-top:1.5rem}.social-row a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;color:var(--text-secondary);font-size:1.1rem;transition:all .3s ease}.social-row a:hover{background:var(--blue-glow);border-color:var(--border-hover);color:var(--blue-primary);transform:translateY(-2px)}
+
+        /* Form */
+        .contact-form-box{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+        .contact-form-box h2{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:.5rem}.contact-form-box>p{color:var(--text-secondary);font-size:.9rem;margin-bottom:2rem}
+
+        .form-row{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-bottom:1.25rem}@media(min-width:480px){.form-row.two{grid-template-columns:1fr 1fr}}
+        .form-group{display:flex;flex-direction:column;gap:.4rem}
+        .form-group label{font-family:var(--font-display);font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.3px}
+        .form-group input,.form-group select,.form-group textarea{padding:.8rem 1rem;background:var(--bg-primary);border:1px solid var(--border);border-radius:10px;color:var(--text-primary);font-family:var(--font-body);font-size:.9rem;transition:all .2s ease;outline:none}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue-primary);box-shadow:0 0 0 3px var(--blue-glow)}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted)}
+        .form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238892a8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+        .form-group select option{background:var(--bg-primary);color:var(--text-primary)}
+        .form-group textarea{min-height:140px;resize:vertical}
+
+        .btn-submit{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 1.75rem;background:var(--blue-primary);color:#fff;border-radius:10px;font-family:var(--font-display);font-size:.95rem;font-weight:600;transition:all .3s ease;border:none;cursor:pointer;margin-top:.5rem}.btn-submit:hover{background:var(--blue-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(74,123,255,0.35)}
+
+        footer{padding:5rem 0 2rem;border-top:1px solid var(--border)}.footer-grid{display:grid;grid-template-columns:1fr;gap:3rem;margin-bottom:4rem}@media(min-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1024px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr}}.footer-brand p{color:var(--text-secondary);margin:1rem 0 1.5rem;font-size:.9rem;line-height:1.7;max-width:280px}.footer-socials{display:flex;gap:.75rem}.footer-socials a{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;color:var(--text-secondary);font-size:1rem;transition:all .3s ease}.footer-socials a:hover{background:var(--blue-glow);border-color:var(--border-hover);color:var(--blue-primary);transform:translateY(-2px)}.footer-col h4{font-family:var(--font-display);font-size:.9rem;font-weight:700;margin-bottom:1.25rem}.footer-col ul li{margin-bottom:.6rem}.footer-col ul a{font-size:.9rem;color:var(--text-secondary)}.footer-col ul a:hover{color:var(--blue-primary);padding-left:4px}.footer-col ul li.contact-item{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);font-size:.9rem}.footer-col ul li.contact-item i{color:var(--blue-primary);font-size:.85rem;width:16px}.footer-bottom{padding-top:2rem;border-top:1px solid var(--border);text-align:center;font-size:.85rem;color:var(--text-muted)}
+
+        .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">Web<span>Kutak</span><span class="logo-dot">.</span></a>
-            
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Otvori meni">☰</button>
-            
-            <nav class="nav-menu" id="navMenu">
-                <button class="close-menu" id="closeMenu" aria-label="Zatvori meni">✕</button>
-                <ul class="menu-items">
-                    <li><a href="index.html">Početna</a></li>
-                    <li><a href="usluge.html">Usluge</a></li>
-                    <li><a href="onama.html">O nama</a></li>
-                    <li><a href="kontakt.html" class="active">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h2>Tu smo za vas</h2>
-                    <p>Naš tim stručnjaka je spreman da odgovori na sva vaša pitanja i pomogne vam u realizaciji vaših digitalnih ideja. Kontaktirajte nas i dogovorite besplatnu konsultaciju.</p>
-                    
-                    <ul class="contact-details">
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                +382 67 844 223
-                                <span>Pon-Pet: 8:00 - 20:00</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                webkutakpg@gmail.com
-                                <span>Pošaljite nam upit bilo kada</span>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                
 
-                    
-                    <form id="contactForm" action="mailto:webkutakpg@gmail.com" method="post" enctype="text/plain">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Ime i prezime</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Vaše ime i prezime" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email adresa</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="Vaša email adresa" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Broj telefona</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Vaš broj telefona">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject" class="form-label">Tema</label>
-                                <select id="subject" name="subject" class="form-control">
-                                    <option value="" disabled selected>Izaberite temu</option>
-                                    <option value="web-design">Web Dizajn</option>
-                                    <option value="development">Web Development</option>
-                                    <option value="ecommerce">E-commerce</option>
-                                    <option value="seo">SEO Optimizacija</option>
-                                    <option value="other">Drugo</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message" class="form-label">Poruka</label>
-                                <textarea id="message" name="message" class="form-control" placeholder="Opišite vaš projekat ili postavite pitanje" required></textarea>
-                            </div>
+<header id="header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo"><img src="logo.png" alt="WebKutak"></a>
+        <nav class="nav-desktop">
+            <a href="index.html">Početna</a>
+            <a href="usluge.html">Usluge</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="onama.html">O nama</a>
+        </nav>
+        <a href="kontakt.html" class="nav-cta active" style="background:var(--blue-light)">Kontakt <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Meni"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <div class="mobile-menu-nav">
+        <a href="index.html">Početna</a>
+        <a href="usluge.html">Usluge</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="onama.html">O nama</a>
+        <a href="kontakt.html" class="active">Kontakt</a>
+    </div>
+    <a href="kontakt.html" class="mobile-menu-cta">Kontaktirajte nas</a>
+</div>
+
+<section class="page-hero">
+    <div class="container">
+        <span class="section-label">Kontakt</span>
+        <h1>Razgovarajmo o <span class="gradient">vašem projektu</span></h1>
+        <p>Imate ideju ili pitanje? Pošaljite nam poruku ili nas kontaktirajte direktno — odgovorićemo vam u najkraćem roku.</p>
+    </div>
+</section>
+
+<section class="section" style="padding-top:0">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="contact-cards">
+                    <div class="c-card">
+                        <div class="c-card-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p><a href="tel:+38267844223">+382 67 844 223</a></p>
+                            <p>Pon — Pet: 08:00 — 20:00</p>
                         </div>
-                        
-                        <button type="submit" class="btn-submit">Pošaljite poruku</button>
-                    </form>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:webkutakpg@gmail.com">webkutakpg@gmail.com</a></p>
+                            <p>Pošaljite nam upit bilo kada</p>
+                        </div>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h3>Lokacija</h3>
+                            <p>Podgorica, Crna Gora</p>
+                        </div>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card-icon"><i class="fab fa-instagram"></i></div>
+                        <div>
+                            <h3>Instagram</h3>
+                            <p><a href="https://www.instagram.com/webkutak/" target="_blank">@webkutak</a></p>
+                            <p>Pratite naše projekte i novosti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-row">
+                    <a href="https://www.instagram.com/webkutak/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+38267844223" aria-label="Telefon"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:webkutakpg@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-box reveal">
+                <h2>Pošaljite nam poruku</h2>
+                <p>Popunite formular i javićemo vam se u roku od 24 sata.</p>
+
+                <form action="mailto:webkutakpg@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-row two">
+                        <div class="form-group">
+                            <label for="name">Ime i prezime</label>
+                            <input type="text" id="name" placeholder="Vaše ime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email adresa</label>
+                            <input type="email" id="email" placeholder="vaš@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row two">
+                        <div class="form-group">
+                            <label for="phone">Broj telefona</label>
+                            <input type="tel" id="phone" placeholder="+382 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Tema</label>
+                            <select id="subject">
+                                <option value="" disabled selected>Izaberite temu</option>
+                                <option value="web-design">Web Dizajn</option>
+                                <option value="development">Web Development</option>
+                                <option value="mobile">Mobilna Aplikacija</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="software">Poslovni Softver</option>
+                                <option value="other">Drugo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message">Poruka</label>
+                            <textarea id="message" placeholder="Opišite vaš projekat ili postavite pitanje..." required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Pošaljite poruku <i class="fas fa-paper-plane" style="font-size:.85rem"></i></button>
+                </form>
             </div>
         </div>
-    </section>
-    
-    
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Često postavljana pitanja</h2>
-                <p class="section-desc">Pronađite odgovore na najčešća pitanja o našim uslugama i procesu rada.</p>
-            </div>
-            
-            <div class="faq-container">
-                <!-- FAQ Item 1 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Koliko košta izrada web sajta?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Cena izrade web sajta zavisi od nekoliko faktora, uključujući kompleksnost dizajna, broj stranica, potrebne funkcionalnosti i specifične zahteve. Naši paketi počinju od 149€ za osnovni sajt, dok složeniji projekti mogu koštati više. Kontaktirajte nas za besplatnu procenu cene za vaš specifični projekat.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Koliko vremena je potrebno za izradu web sajta?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Vreme potrebno za izradu web sajta zavisi od složenosti projekta. Jednostavni sajtovi mogu biti spremni za nedelju dana, dok složeniji projekti poput e-commerce rešenja mogu trajati jednog meseca. Nakon inicijalne konsultacije, moći ćemo da vam damo precizniju procenu vremenskog okvira za vaš projekat.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Da li pružate usluge održavanja sajta nakon završetka projekta?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Da, nudimo različite pakete održavanja koji uključuju redovno ažuriranje sadržaja, tehničku podršku, sigurnosne provere i backup. Možete izabrati mesečni ili godišnji plan održavanja u zavisnosti od vaših potreba. Takođe, obučavamo naše klijente kako da sami ažuriraju osnovni sadržaj na sajtu.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Koje tehnologije koristite za razvoj web sajtova?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Koristimo najnovije tehnologije i najbolje prakse u industriji. Za front-end razvoj koristimo HTML5, CSS3, JavaScript i moderne framework-e poput React-a. Za back-end razvoj, zavisno od projekta, koristimo PHP, Node.js ili Python. Za e-commerce projekte često koristimo WooCommerce ili Magento, a za druge tipove sajtova WordPress ili custom rešenja.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 5 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Da li se bavite SEO optimizacijom?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Da, SEO optimizacija je ključni deo naših usluga. Svi naši sajtovi su izgrađeni sa osnovnom SEO optimizacijom, što uključuje optimizaciju brzine, mobilnu responzivnost i semantičko označavanje. Takođe nudimo i napredne SEO usluge koje uključuju istraživanje ključnih reči, optimizaciju sadržaja, izgradnju linkova i praćenje pozicija na pretraživačima.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 6 -->
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Kako izgleda proces izrade web sajta?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Naš proces se sastoji od nekoliko faza: 1) Inicijalna konsultacija i analiza zahteva, 2) Izrada wireframe-a i dizajn koncepta, 3) Odobrenje dizajna i početak razvoja, 4) Razvoj i implementacija funkcionalnosti, 5) Testiranje i optimizacija, 6) Lansiranje sajta i obuka klijenta. Tokom celog procesa redovno komuniciramo sa klijentom i tražimo povratne informacije.</p>
-                    </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><img src="logo.png" alt="WebKutak"></a>
+                <p>Kreiramo digitalna rješenja koja pomažu biznisima da rastu i napreduju u modernom digitalnom svijetu.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/webkutak/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+38267844223"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:webkutakpg@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
+            <div class="footer-col"><h4>Navigacija</h4><ul><li><a href="index.html">Početna</a></li><li><a href="usluge.html">Usluge</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="onama.html">O nama</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+            <div class="footer-col"><h4>Usluge</h4><ul><li><a href="usluge.html">Web Dizajn</a></li><li><a href="usluge.html">Web Development</a></li><li><a href="usluge.html">Mobilne Aplikacije</a></li><li><a href="usluge.html">E-commerce</a></li><li><a href="usluge.html">Poslovni Softver</a></li></ul></div>
+            <div class="footer-col"><h4>Kontakt</h4><ul><li class="contact-item"><i class="fas fa-phone"></i> +382 67 844 223</li><li class="contact-item"><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li><li class="contact-item"><i class="fas fa-map-marker-alt"></i> Podgorica, Crna Gora</li></ul></div>
         </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h3>Web<span>Kutak</span><span class="logo-dot">.</span></h3>
-                    <p>Mi smo tim kreativnih profesionalaca posvećenih kreiranju impresivnih digitalnih iskustava koja pomažu vašem biznisu da raste i napreduje u digitalnom svetu.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/webkutak/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="tel:+38267844223" aria-label="Twitter"><i class="fa fa-phone"></i></a>
-                        <a href="mailto:webkutakpg@gmail.com" aria-label="LinkedIn"><i class="fa fa-envelope"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Navigacija</h3>
-                    <ul class="footer-menu">
-                        <li><a href="index.html">Početna</a></li>
-                        <li><a href="usluge.html">Usluge</a></li>
-                        <li><a href="onama.html">O nama</a></li>
-                        <li><a href="kontakt.html">Kontakt</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Usluge</h3>
-                    <ul class="footer-menu">
-                        <li><a href="usluge.html#web-design">Web Dizajn</a></li>
-                        <li><a href="usluge.html#web-development">Web Development</a></li>
-                        <li><a href="usluge.html#e-commerce">E-commerce</a></li>
-                        <li><a href="usluge.html#seo">SEO Optimizacija</a></li>
-                        <li><a href="usluge.html#maintenance">Održavanje</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Kontakt</h3>
-                    <ul class="footer-menu">
-                        <li><i class="fas fa-phone"></i> +382 67 844 223</li>
-                        <li><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 WebKutak</p>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const navMenu = document.getElementById('navMenu');
-        
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.add('active');
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-        
-        // FAQs accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Toggle current FAQ item
-                item.classList.toggle('active');
-            });
-        });
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contactForm');
-        const alertSuccess = document.getElementById('alertSuccess');
-        const alertError = document.getElementById('alertError');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                alertError.style.display = 'block';
-                alertError.textContent = 'Molimo popunite sva obavezna polja.';
-                
-                // Hide error message after 5 seconds
-                setTimeout(() => {
-                    alertError.style.display = 'none';
-                }, 5000);
-                
-                return;
-            }
-            
-            // Simulate form submission
-            setTimeout(() => {
-                // Show success message
-                alertSuccess.style.display = 'block';
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    alertSuccess.style.display = 'none';
-                }, 5000);
-            }, 1000);
-        });
-        
-        // Animations on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        function checkScroll() {
-            fadeElements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-        
-        // Set initial state for animations
-        fadeElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-        
-        // Check on load and scroll
-        window.addEventListener('load', checkScroll);
-        window.addEventListener('scroll', checkScroll);
-    </script>
+        <div class="footer-bottom"><p>&copy; <span id="year"></span> WebKutak. Sva prava zadržana.</p></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+const t=document.getElementById('mobileToggle'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay'),c=document.getElementById('mobileClose');
+t.addEventListener('click',()=>{m.classList.add('open');o.classList.add('open')});
+c.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+o.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
