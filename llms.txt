@@ -1,0 +1,18 @@
+# WebKutak
+
+> WebKutak je agencija specijalizovana za izradu modernih web sajtova, mobilnih aplikacija i kompletnih softverskih sistema. Pružamo usluge digitalne transformacije — od ideje do realizacije.
+
+Sajt je na srpskom jeziku i prezentuje usluge, portfolio i informacije o agenciji WebKutak.
+
+## Stranice
+
+- [Početna](https://webkutak.com/): Uvodna stranica sa pregledom usluga i ključnim informacijama o agenciji.
+- [Usluge](https://webkutak.com/usluge): Detaljan prikaz usluga — izrada web sajtova, mobilnih aplikacija, e-commerce rešenja i softverskih sistema.
+- [Portfolio](https://webkutak.com/portfolio): Pregled realizovanih projekata i klijenata.
+- [O nama](https://webkutak.com/onama): Informacije o agenciji, timu i pristupu radu.
+- [Kontakt](https://webkutak.com/kontakt): Kontakt forma i podaci za saradnju.
+
+## Dodatno
+
+- [Sitemap](https://webkutak.com/sitemap.xml): XML mapa sajta.
+- [robots.txt](https://webkutak.com/robots.txt): Pravila za pretraživačke botove.
