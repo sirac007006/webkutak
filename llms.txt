@@ -55,7 +55,7 @@ Programmatic video creation using Remotion — useful for agencies and businesse
 - **Teknolux** — Business document management system with invoicing, inventory, discount logic, and printing (EJS/Node.js/PostgreSQL).
 - **Lovački Savez Crne Gore** — Organizational management software for the Hunting Association of Montenegro.
 - **Webkutak Outreach System** — Automated lead generation tool scraping Balkan businesses without websites, generating AI-personalized pitches, and sending via Gmail OAuth2.
-- Various client websites: Carevo Skadarsko Jezero, Mazor Shop, Elite Ride, Vinarija Bojanović, Noah's Ark, Maya's Cleaning.
+- Various client websites: Carevo Skadarsko Jezero, Mazor Shop, Vinarija Bojanović, Maya's Cleaning.
 
 ## Technology Stack
 
