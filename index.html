@@ -10,28 +10,55 @@
     <title>WebKutak | Izrada modernih web stranica i aplikacija</title>
     <meta name="description" content="WebKutak - Profesionalna izrada web sajtova, mobilnih aplikacija i digitalnih rješenja. Vaš partner za digitalnu transformaciju.">
     <style>
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 8rem 0 5rem; overflow: hidden; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-    .hero-bg::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, var(--blue-glow-strong) 0%, transparent 70%); border-radius: 50%; animation: floatOrb 8s ease-in-out infinite; }
-    .hero-bg::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%); border-radius: 50%; animation: floatOrb 10s ease-in-out infinite reverse; }
-    @keyframes floatOrb { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, 20px); } }
-    .hero-grid { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(74,123,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(74,123,255,0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%); }
-    .hero-content { position: relative; z-index: 1; max-width: 720px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.2); border-radius: 100px; font-family: var(--font-display); font-size: 0.8rem; font-weight: 500; color: var(--blue-light); margin-bottom: 2rem; }
-    .hero-badge .dot { width: 6px; height: 6px; background: var(--blue-primary); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-    .hero-desc { font-size: 1.125rem; color: var(--text-secondary); max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-    .hero-stat h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--blue-primary); letter-spacing: -0.02em; }
-    .hero-stat p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .anim { animation: fadeUp 0.8s ease forwards; }
-    .anim-d1 { animation-delay: 0.1s; opacity: 0; }
-    .anim-d2 { animation-delay: 0.2s; opacity: 0; }
-    .anim-d3 { animation-delay: 0.3s; opacity: 0; }
-    .anim-d4 { animation-delay: 0.4s; opacity: 0; }
+    /* ---- Hero ---- */
+    .hero { position: relative; padding: 11rem 0 4rem; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(880px 420px at 82% 8%, rgba(74,123,255,0.10), transparent 62%), linear-gradient(180deg, rgba(56,189,248,0.035), transparent 38%); }
+    .hero-layout { position: relative; display: grid; grid-template-columns: 1fr; gap: 3.25rem; align-items: start; }
+    @media(min-width:1000px) { .hero-layout { grid-template-columns: minmax(0,1.12fr) minmax(0,0.88fr); gap: 4.5rem; } }
+
+    .hero-eyebrow { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.75rem; }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--blue-primary); flex: none; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.05rem, 4.6vw, 3.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
+    .hero h1 .mark { background-image: linear-gradient(rgba(74,123,255,0.32), rgba(74,123,255,0.32)); background-repeat: no-repeat; background-size: 100% 0.22em; background-position: 0 99%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    .hero-desc { font-size: 1.05rem; color: var(--text-secondary); max-width: 46ch; line-height: 1.75; margin-bottom: 2.25rem; }
+    .hero-desc strong { color: var(--text-primary); font-weight: 600; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .hero-note { margin-top: 1.75rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; color: var(--text-muted); }
+    .hero-note i { color: var(--blue-primary); font-size: 0.8rem; }
+    .hero-note a { color: var(--text-secondary); border-bottom: 1px solid var(--border-hover); }
+    .hero-note a:hover { color: var(--blue-light); }
+
+    /* Work index card */
+    .hero-work { border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(180deg, var(--bg-card), rgba(19,26,46,0.4)); overflow: hidden; }
+    .hero-work-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.35rem; border-bottom: 1px solid var(--border); }
+    .hero-work-head span { font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+    .hero-work-head a { font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; color: var(--blue-primary); white-space: nowrap; }
+    .hero-work-head a:hover { color: var(--blue-light); }
+    .work-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1rem 1.35rem; border-bottom: 1px solid var(--border); transition: background 0.25s ease; }
+    .work-row:last-child { border-bottom: 0; }
+    .work-row:hover { background: rgba(74,123,255,0.06); }
+    .work-idx { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; color: var(--text-muted); }
+    .work-name { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); line-height: 1.35; }
+    .work-name em { display: block; font-style: normal; font-family: var(--font-body); font-size: 0.8rem; font-weight: 400; color: var(--text-secondary); margin-top: 0.15rem; }
+    .work-row > i { font-size: 0.72rem; color: var(--text-muted); opacity: 0; transform: translateX(-5px); transition: all 0.25s ease; }
+    .work-row:hover > i { opacity: 1; transform: translateX(0); color: var(--blue-primary); }
+
+    /* Stack strip */
+    .hero-stack { position: relative; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 2.25rem; }
+    .hero-stack p { font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+    .hero-stack ul { display: flex; flex-wrap: wrap; gap: 0.75rem 1.85rem; }
+    .hero-stack li { font-family: var(--font-display); font-size: 0.92rem; font-weight: 600; color: var(--text-secondary); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .anim { animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+    .anim-d1 { animation-delay: 0.08s; opacity: 0; }
+    .anim-d2 { animation-delay: 0.16s; opacity: 0; }
+    .anim-d3 { animation-delay: 0.24s; opacity: 0; }
+    .anim-d4 { animation-delay: 0.32s; opacity: 0; }
+    @media(prefers-reduced-motion: reduce) { .anim, .anim-d1, .anim-d2, .anim-d3, .anim-d4 { animation: none; opacity: 1; } }
+    @media(max-width:640px) { .hero { padding: 8.5rem 0 3rem; } .hero-stack { gap: 0.75rem 1.25rem; } }
+
+    /* ---- Services ---- */
     .services-section { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 3rem; }
     @media(min-width:640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -41,7 +68,6 @@
     .service-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.15); border-radius: 12px; color: var(--blue-primary); font-size: 1.2rem; margin-bottom: 1.25rem; }
     .service-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
     .service-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
-    @media(max-width:640px) { .hero-stats { gap: 1.5rem; flex-wrap: wrap; } .hero-stat h3 { font-size: 1.5rem; } }
     </style>
 </head>
 <body>
@@ -72,21 +98,55 @@
 </div>
 
 <section class="hero">
-    <div class="hero-bg"><div class="hero-grid"></div></div>
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge anim"><span class="dot"></span> Vaš partner za digitalnu transformaciju</div>
-            <h1 class="anim anim-d1">Gradimo <span class="gradient">digitalna rješenja</span> koja pokreću vaš biznis</h1>
-            <p class="hero-desc anim anim-d2">Specijalizovani smo za izradu modernih web sajtova, mobilnih aplikacija i kompletnih softverskih sistema. Od ideje do realizacije — mi smo tu za vas.</p>
-            <div class="hero-actions anim anim-d3">
-                <a href="portfolio.html" class="btn-primary">Pogledajte radove <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
-                <a href="kontakt.html" class="btn-ghost">Kontaktirajte nas</a>
+        <div class="hero-layout">
+            <div class="hero-main">
+                <p class="hero-eyebrow anim">Web studio &middot; Podgorica</p>
+                <h1 class="anim anim-d1">Pravimo sajtove i softver koje firme <span class="mark">koriste svaki dan</span>.</h1>
+                <p class="hero-desc anim anim-d2">WebKutak je mali tim iz Podgorice. Gradimo web sajtove, mobilne aplikacije i interne sisteme &mdash; od <strong>servisne aplikacije za VOX Electronics</strong> do <strong>softvera za lovne dozvole Lovačkog saveza Crne Gore</strong>.</p>
+                <div class="hero-actions anim anim-d3">
+                    <a href="portfolio.html" class="btn-primary">Pogledajte radove <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
+                    <a href="kontakt.html" class="btn-ghost">Zakažite razgovor</a>
+                </div>
+                <p class="hero-note anim anim-d3"><i class="fas fa-circle-check"></i> Javljamo se u roku od 24h &mdash; <a href="tel:+38267844223">+382 67 844 223</a></p>
             </div>
-            <div class="hero-stats anim anim-d4">
-                <div class="hero-stat"><h3>15+</h3><p>Završenih projekata</p></div>
-                <div class="hero-stat"><h3>100%</h3><p>Zadovoljnih klijenata</p></div>
-                <div class="hero-stat"><h3>24/7</h3><p>Podrška i održavanje</p></div>
-            </div>
+            <aside class="hero-work anim anim-d4">
+                <div class="hero-work-head">
+                    <span>Izdvojeno iz portfolija</span>
+                    <a href="portfolio.html">Svi projekti</a>
+                </div>
+                <a href="projekti/vox-servis.html" class="work-row">
+                    <span class="work-idx">01</span>
+                    <span class="work-name">VOX Servis <em>Mobilna aplikacija &middot; React Native</em></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="projekti/lovacki-savez.html" class="work-row">
+                    <span class="work-idx">02</span>
+                    <span class="work-name">Lovački Savez Crne Gore <em>Web softver &middot; Node.js, PostgreSQL</em></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="projekti/tehnolux.html" class="work-row">
+                    <span class="work-idx">03</span>
+                    <span class="work-name">Tehnolux <em>Poslovni softver &middot; Node.js, EJS</em></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="projekti/mazor-shop.html" class="work-row">
+                    <span class="work-idx">04</span>
+                    <span class="work-name">Mazor Shop <em>E-commerce &middot; React, PostgreSQL</em></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </aside>
+        </div>
+        <div class="hero-stack anim anim-d4">
+            <p>Naš stack</p>
+            <ul>
+                <li>React</li>
+                <li>React Native</li>
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>PostgreSQL</li>
+                <li>TypeScript</li>
+            </ul>
         </div>
     </div>
 </section>
@@ -95,8 +155,8 @@
     <div class="container">
         <div class="reveal">
             <span class="section-label">Portfolio</span>
-            <h2 class="section-title">Naši najnoviji projekti</h2>
-            <p class="section-desc">Pogledajte neka od digitalnih rješenja koja smo kreirali za naše klijente.</p>
+            <h2 class="section-title">Nedavni radovi</h2>
+            <p class="section-desc">Šest projekata koji pokazuju kako radimo — od mobilnih aplikacija i internih sistema do e-commerce platformi.</p>
         </div>
         <div class="portfolio-grid">
             <a href="projekti/vox-servis.html" class="portfolio-card reveal" style="color:inherit">
@@ -154,14 +214,14 @@
                     <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
-            <a href="projekti/elite-ride.html" class="portfolio-card reveal" style="color:inherit">
+            <a href="projekti/vinarija-bojanovic.html" class="portfolio-card reveal" style="color:inherit">
                 <div class="portfolio-thumb">
-                    <img src="eliteride.png" alt="Elite Ride">
-                    <span class="portfolio-tag">Limo Servis</span>
+                    <img src="vinarijabojanovic.png" alt="Vinarija Bojanović">
+                    <span class="portfolio-tag">Vinarija</span>
                 </div>
                 <div class="portfolio-body">
-                    <h3>Elite Ride</h3>
-                    <p>Elegantni sajt za luksuzni limo servis sa online rezervacijom.</p>
+                    <h3>Vinarija Bojanović</h3>
+                    <p>Web sajt za porodičnu vinariju iz Bera — pregled vina, priča o vinariji i rezervacija posjete.</p>
                     <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
