@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>WebKutak | Izrada modernih web stranica i aplikacija</title>
-    <meta name="description" content="WebKutak - Profesionalna izrada web sajtova, mobilnih aplikacija i digitalnih rješenja. Vaš partner za digitalnu transformaciju.">
+    <title>WebKutak | Modern websites and applications</title>
+    <meta name="description" content="WebKutak - Professional web design, mobile app development and digital solutions. Your partner for digital transformation.">
     <style>
     /* ---- Hero ---- */
-    .hero { position: relative; padding: 11rem 0 4rem; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(880px 420px at 82% 8%, rgba(74,123,255,0.10), transparent 62%), linear-gradient(180deg, rgba(56,189,248,0.035), transparent 38%); }
-    .hero-layout { position: relative; display: grid; grid-template-columns: 1fr; gap: 3.25rem; align-items: start; }
-    @media(min-width:1000px) { .hero-layout { grid-template-columns: minmax(0,1.12fr) minmax(0,0.88fr); gap: 4.5rem; } }
+    .hero { position: relative; padding: 9rem 0 3.5rem; overflow: hidden; }
+    .hero-layout { position: relative; display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
+    @media(min-width:1000px) { .hero-layout { grid-template-columns: minmax(0,1.18fr) minmax(0,0.82fr); gap: 4.5rem; align-items: start; } }
 
     .hero-eyebrow { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.75rem; }
     .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--blue-primary); flex: none; }
-    .hero h1 { font-family: var(--font-display); font-size: clamp(2.05rem, 4.6vw, 3.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.75rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
     .hero h1 .mark { background-image: linear-gradient(rgba(74,123,255,0.32), rgba(74,123,255,0.32)); background-repeat: no-repeat; background-size: 100% 0.22em; background-position: 0 99%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
     .hero-desc { font-size: 1.05rem; color: var(--text-secondary); max-width: 46ch; line-height: 1.75; margin-bottom: 2.25rem; }
     .hero-desc strong { color: var(--text-primary); font-weight: 600; }
@@ -58,43 +57,43 @@
     @media(prefers-reduced-motion: reduce) { .anim, .anim-d1, .anim-d2, .anim-d3, .anim-d4 { animation: none; opacity: 1; } }
     @media(max-width:640px) { .hero { padding: 8.5rem 0 3rem; } .hero-stack { gap: 0.75rem 1.25rem; } }
 
-    /* ---- Services ---- */
+    /* ---- Services (ledger) ---- */
     .services-section { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 3rem; }
-    @media(min-width:640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media(min-width:1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
-    .service-card { position: relative; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
-    .service-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-3px); }
-    .service-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.15); border-radius: 12px; color: var(--blue-primary); font-size: 1.2rem; margin-bottom: 1.25rem; }
-    .service-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .service-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+    .services-list { margin-top: 3rem; border-top: 1px solid var(--border); }
+    .svc-item { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 1.25rem; row-gap: 0.35rem; padding: 1.5rem 0.75rem; border-bottom: 1px solid var(--border); transition: background 0.25s ease; }
+    .svc-item:hover { background: var(--bg-card); }
+    .svc-num { font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; color: var(--text-muted); padding-top: 0.15rem; transition: color 0.25s ease; }
+    .svc-item:hover .svc-num { color: var(--blue-primary); }
+    .svc-item h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
+    .svc-item p { grid-column: 2; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; max-width: 60ch; }
+    @media(min-width:860px) { .svc-item { grid-template-columns: 3rem 16rem 1fr; column-gap: 2rem; align-items: baseline; padding: 1.65rem 0.75rem; } .svc-item p { grid-column: 3; } }
     </style>
 </head>
 <body>
 <header id="header">
     <div class="container header-inner">
-        <a href="index.html" class="logo"><img src="logo.png" alt="WebKutak"></a>
+        <a href="index.html" class="logo" aria-label="WebKutak — home"><img src="logo.png" alt=""></a>
         <nav class="nav-desktop">
-            <a href="index.html" class="active">Početna</a>
-            <a href="usluge.html">Usluge</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="usluge.html">Services</a>
             <a href="portfolio.html">Portfolio</a>
-            <a href="onama.html">O nama</a>
+            <a href="onama.html">About</a>
         </nav>
-        <a href="kontakt.html" class="nav-cta">Kontakt <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Meni"><span></span><span></span><span></span></button>
+        <a href="kontakt.html" class="nav-cta">Contact <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </header>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose">&times;</button>
     <div class="mobile-menu-nav">
-        <a href="index.html" class="active">Početna</a>
-        <a href="usluge.html">Usluge</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="usluge.html">Services</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="onama.html">O nama</a>
-        <a href="kontakt.html">Kontakt</a>
+        <a href="onama.html">About</a>
+        <a href="kontakt.html">Contact</a>
     </div>
-    <a href="kontakt.html" class="mobile-menu-cta">Kontaktirajte nas</a>
+    <a href="kontakt.html" class="mobile-menu-cta">Contact us</a>
 </div>
 
 <section class="hero">
@@ -102,43 +101,48 @@
         <div class="hero-layout">
             <div class="hero-main">
                 <p class="hero-eyebrow anim">Web studio &middot; Podgorica</p>
-                <h1 class="anim anim-d1">Pravimo sajtove i softver koje firme <span class="mark">koriste svaki dan</span>.</h1>
-                <p class="hero-desc anim anim-d2">WebKutak je mali tim iz Podgorice. Gradimo web sajtove, mobilne aplikacije i interne sisteme &mdash; od <strong>servisne aplikacije za VOX Electronics</strong> do <strong>softvera za lovne dozvole Lovačkog saveza Crne Gore</strong>.</p>
+                <h1 class="anim anim-d1">We build websites and software that companies <span class="mark">use every day</span>.</h1>
+                <p class="hero-desc anim anim-d2">WebKutak is a small team from Podgorica. We build websites, web and mobile apps, e-commerce platforms and internal systems &mdash; from the first sketch to production and maintenance.</p>
                 <div class="hero-actions anim anim-d3">
-                    <a href="portfolio.html" class="btn-primary">Pogledajte radove <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
-                    <a href="kontakt.html" class="btn-ghost">Zakažite razgovor</a>
+                    <a href="kontakt.html" class="btn-primary">Book a call <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
+                    <a href="portfolio.html" class="btn-ghost">View our work</a>
                 </div>
-                <p class="hero-note anim anim-d3"><i class="fas fa-circle-check"></i> Javljamo se u roku od 24h &mdash; <a href="tel:+38267844223">+382 67 844 223</a></p>
+                <p class="hero-note anim anim-d3"><i class="fas fa-circle-check"></i> We reply within 24h &mdash; <a href="tel:+38267844223">+382 67 844 223</a></p>
             </div>
             <aside class="hero-work anim anim-d4">
                 <div class="hero-work-head">
-                    <span>Izdvojeno iz portfolija</span>
-                    <a href="portfolio.html">Svi projekti</a>
+                    <span>What we do</span>
+                    <a href="usluge.html">All services</a>
                 </div>
-                <a href="projekti/vox-servis.html" class="work-row">
+                <a href="usluge.html" class="work-row">
                     <span class="work-idx">01</span>
-                    <span class="work-name">VOX Servis <em>Mobilna aplikacija &middot; React Native</em></span>
+                    <span class="work-name">Websites &amp; platforms <em>Corporate sites, landing pages, CMS</em></span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="projekti/lovacki-savez.html" class="work-row">
+                <a href="usluge.html" class="work-row">
                     <span class="work-idx">02</span>
-                    <span class="work-name">Lovački Savez Crne Gore <em>Web softver &middot; Node.js, PostgreSQL</em></span>
+                    <span class="work-name">Web &amp; mobile apps <em>React, React Native &middot; iOS &amp; Android</em></span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="projekti/tehnolux.html" class="work-row">
+                <a href="usluge.html" class="work-row">
                     <span class="work-idx">03</span>
-                    <span class="work-name">Tehnolux <em>Poslovni softver &middot; Node.js, EJS</em></span>
+                    <span class="work-name">E-commerce <em>Online stores, payment integrations</em></span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="projekti/mazor-shop.html" class="work-row">
+                <a href="usluge.html" class="work-row">
                     <span class="work-idx">04</span>
-                    <span class="work-name">Mazor Shop <em>E-commerce &middot; React, PostgreSQL</em></span>
+                    <span class="work-name">Internal software <em>CRM, ERP, dashboards, admin panels</em></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="usluge.html" class="work-row">
+                    <span class="work-idx">05</span>
+                    <span class="work-name">Backend, API &amp; maintenance <em>Node.js, PostgreSQL &middot; support &amp; monitoring</em></span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </aside>
         </div>
         <div class="hero-stack anim anim-d4">
-            <p>Naš stack</p>
+            <p>Our stack</p>
             <ul>
                 <li>React</li>
                 <li>React Native</li>
@@ -151,104 +155,23 @@
     </div>
 </section>
 
-<section class="section" id="portfolio">
-    <div class="container">
-        <div class="reveal">
-            <span class="section-label">Portfolio</span>
-            <h2 class="section-title">Nedavni radovi</h2>
-            <p class="section-desc">Šest projekata koji pokazuju kako radimo — od mobilnih aplikacija i internih sistema do e-commerce platformi.</p>
-        </div>
-        <div class="portfolio-grid">
-            <a href="projekti/vox-servis.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="vox.png" alt="VOX Servis">
-                    <span class="portfolio-tag">Mobilna Aplikacija</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>VOX Servis</h3>
-                    <p>Kompletna aplikacija za upravljanje servisnim nalozima za VOX Electronics servisnu mrežu u Crnoj Gori.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="projekti/lovacki-savez.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="lovacki1.jpg" alt="Lovački Savez Crne Gore">
-                    <span class="portfolio-tag">Web Softver</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>Lovački Savez Crne Gore</h3>
-                    <p>Softverski sistem za upravljanje lovačkim dozvolama, evidenciju lovaca i administraciju podataka.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="projekti/tehnolux.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="tehnolux.png" alt="Tehnolux">
-                    <span class="portfolio-tag">Poslovni Softver</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>Tehnolux</h3>
-                    <p>Digitalni sistem za kreiranje poslovnih dokumenata — ponude, predračuni, otpremnice i kalkulacije.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="projekti/carevo-skadarsko-jezero.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="carevoskadarlake.png" alt="Carevo Skadarsko Jezero">
-                    <span class="portfolio-tag">Turizam</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>Carevo Skadarsko Jezero</h3>
-                    <p>Turistički web sajt za ture po Skadarskom jezeru sa online rezervacijom i višejezičnom podrškom.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="projekti/mazor-shop.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="mazor.png" alt="Mazor Shop">
-                    <span class="portfolio-tag">E-commerce</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>Mazor Shop</h3>
-                    <p>Premium e-commerce platforma za prodaju bijele i ostale tehnike sa naprednim sistemom filtriranja.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <a href="projekti/vinarija-bojanovic.html" class="portfolio-card reveal" style="color:inherit">
-                <div class="portfolio-thumb">
-                    <img src="vinarijabojanovic.png" alt="Vinarija Bojanović">
-                    <span class="portfolio-tag">Vinarija</span>
-                </div>
-                <div class="portfolio-body">
-                    <h3>Vinarija Bojanović</h3>
-                    <p>Web sajt za porodičnu vinariju iz Bera — pregled vina, priča o vinariji i rezervacija posjete.</p>
-                    <span class="portfolio-link">Pogledajte detalje <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-        </div>
-        <div style="text-align:center; margin-top: 3rem;" class="reveal">
-            <a href="portfolio.html" class="btn-ghost">Pogledajte sve projekte <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
-        </div>
-    </div>
-</section>
-
 <section class="section services-section" id="services">
     <div class="container">
         <div class="reveal">
-            <span class="section-label">Usluge</span>
-            <h2 class="section-title">Šta nudimo</h2>
-            <p class="section-desc">Kompletna digitalna rješenja — od dizajna i razvoja do podrške i optimizacije.</p>
+            <span class="section-label">Services</span>
+            <h2 class="section-title">What we offer</h2>
+            <p class="section-desc">Complete digital solutions — from design and development to support and optimization.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-paint-brush"></i></div><h3>Web Dizajn</h3><p>Kreativni i moderni dizajni prilagođeni vašem brendu, sa fokusom na UX/UI i konverzije.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>Web Development</h3><p>Razvoj robusnih web aplikacija koristeći React, Node.js, PostgreSQL i najnovije tehnologije.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobilne Aplikacije</h3><p>Izrada nativnih i cross-platform mobilnih aplikacija u React Native za iOS i Android.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-shopping-cart"></i></div><h3>E-commerce</h3><p>Kompletne online prodavnice sa naprednim sistemima filtriranja, plaćanja i upravljanja.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-server"></i></div><h3>Backend & API</h3><p>Skalabilni backend sistemi, RESTful API-ji, autentifikacija i integracije sa eksternim servisima.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-database"></i></div><h3>Poslovni Softver</h3><p>Custom softverska rješenja — CRM, ERP, sistemi za dokumente, dashboardi i admin paneli.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-search"></i></div><h3>SEO Optimizacija</h3><p>Optimizacija za pretraživače — bolje rangiranje, veća vidljivost i organski saobraćaj.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>Održavanje & Podrška</h3><p>Kontinuirana tehnička podrška, monitoring, backup i redovno ažuriranje vaših sistema.</p></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-palette"></i></div><h3>Brendiranje</h3><p>Vizuelni identitet, logotipi, stilski vodiči i kompletno brendiranje za vaš biznis.</p></div>
+        <div class="services-list">
+            <div class="svc-item reveal"><span class="svc-num">01</span><h3>Websites &amp; design</h3><p>Modern, on-brand websites &mdash; UX/UI, landing pages and CMS, focused on speed and conversions.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">02</span><h3>Web development</h3><p>Robust web applications in React, Node.js and PostgreSQL &mdash; from architecture to production.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">03</span><h3>Mobile apps</h3><p>Cross-platform apps in React Native for iOS and Android, with a single codebase.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">04</span><h3>E-commerce</h3><p>Online stores with advanced filtering, payment integrations and inventory management.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">05</span><h3>Backend &amp; API</h3><p>Scalable backend systems, REST APIs, authentication and third-party integrations.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">06</span><h3>Business software</h3><p>Custom solutions &mdash; CRM, ERP, document systems, dashboards and admin panels.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">07</span><h3>SEO optimization</h3><p>Technical SEO, load speed and content structure for better rankings and organic traffic.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">08</span><h3>Maintenance &amp; support</h3><p>Ongoing monitoring, backups, security updates and technical support.</p></div>
+            <div class="svc-item reveal"><span class="svc-num">09</span><h3>Branding</h3><p>Visual identity, logos and style guides &mdash; consistent across every channel.</p></div>
         </div>
     </div>
 </section>
@@ -256,9 +179,9 @@
 <section class="section">
     <div class="container">
         <div class="cta-box reveal">
-            <h2>Imate ideju? <span class="gradient">Hajde da je realizujemo.</span></h2>
-            <p>Kontaktirajte nas danas i razgovarajmo o tome kako možemo pomoći vašem biznisu da raste u digitalnom svijetu.</p>
-            <a href="kontakt.html" class="btn-primary">Započnite projekat <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
+            <h2>Have an idea? <span class="gradient">Let's build it.</span></h2>
+            <p>Get in touch today and let's talk about how we can help your business grow in the digital world.</p>
+            <a href="kontakt.html" class="btn-primary">Start a project <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
         </div>
     </div>
 </section>
@@ -267,19 +190,19 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo"><img src="logo.png" alt="WebKutak"></a>
-                <p>Kreiramo digitalna rješenja koja pomažu biznisima da rastu i napreduju u modernom digitalnom svijetu.</p>
+                <a href="index.html" class="logo" aria-label="WebKutak — home"><img src="logo.png" alt=""></a>
+                <p>We craft digital solutions that help businesses grow and thrive in the modern digital world.</p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/webkutak/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="tel:+38267844223"><i class="fas fa-phone"></i></a>
                     <a href="mailto:webkutakpg@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            <div class="footer-col"><h4>Navigacija</h4><ul><li><a href="index.html">Početna</a></li><li><a href="usluge.html">Usluge</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="onama.html">O nama</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-            <div class="footer-col"><h4>Usluge</h4><ul><li><a href="usluge.html">Web Dizajn</a></li><li><a href="usluge.html">Web Development</a></li><li><a href="usluge.html">Mobilne Aplikacije</a></li><li><a href="usluge.html">E-commerce</a></li><li><a href="usluge.html">Poslovni Softver</a></li></ul></div>
-            <div class="footer-col"><h4>Kontakt</h4><ul><li class="contact-item"><i class="fas fa-phone"></i> +382 67 844 223</li><li class="contact-item"><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li><li class="contact-item"><i class="fas fa-map-marker-alt"></i> Podgorica, Crna Gora</li></ul></div>
+            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="usluge.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="onama.html">About</a></li><li><a href="kontakt.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Services</h4><ul><li><a href="usluge.html">Web Design</a></li><li><a href="usluge.html">Web Development</a></li><li><a href="usluge.html">Mobile Apps</a></li><li><a href="usluge.html">E-commerce</a></li><li><a href="usluge.html">Business Software</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li class="contact-item"><i class="fas fa-phone"></i> +382 67 844 223</li><li class="contact-item"><i class="fas fa-envelope"></i> webkutakpg@gmail.com</li><li class="contact-item"><i class="fas fa-map-marker-alt"></i> Podgorica, Montenegro</li></ul></div>
         </div>
-        <div class="footer-bottom"><p>&copy; <span id="year"></span> WebKutak. Sva prava zadržana.</p></div>
+        <div class="footer-bottom"><p>&copy; <span id="year"></span> WebKutak. All rights reserved.</p></div>
     </div>
 </footer>
 
