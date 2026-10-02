@@ -47,6 +47,7 @@ Programmatic video creation using Remotion — useful for agencies and businesse
 
 ## Notable Projects
 
+- **Hotel Monte Cristo (hotelmontecristo.me)** — Bilingual (EN/ME) website for a boutique hotel in a 13th-century building inside Kotor Old Town. Six room types with galleries, live availability checks, direct online booking with card payment via the Monri gateway, guest booking lookup, restaurant, services and weddings pages, and a protected admin panel with bookings, statuses and monthly revenue. Built with Next.js, React, TypeScript and PostgreSQL.
 - **ITS Webshop (itscg.me)** — Full e-commerce platform for ITS (Information Technology Service), an IT retailer and authorized service in Podgorica. ~900 products auto-imported from B2B supplier web services (PIN Computers, Mainframe — SOAP/XML) with margin-based pricing, server-side filters, typeahead search, cart and wishlist, transactional stock checks, admin dashboard (orders, customers, reports with CSV export, budget, B2B offers as PDF/Word, review moderation, Instagram post generator), Google Merchant feed and a React Native app for staff and delivery drivers. Built with Astro, TypeScript, Node.js and PostgreSQL.
 - **SeaRush Tours (searushtours.com)** — Multilingual (EN/ME/IT/FR) website for speedboat tours in the Bay of Kotor (Perast, Our Lady of the Rocks, Blue Cave). Online booking with availability per departure, card deposit payments via Monri gateway, automatic email confirmations (Resend), admin panel for tours, prices, bookings and gallery. Built with React, Vite, Tailwind CSS, GSAP, Express and PostgreSQL.
 - **Parentivo** — React Native app and support platform for parents of children with special needs. Winner of the m:tel App Contest (regional). Features: expert appointment booking, AI moderation, video calling (Agora SDK), babysitting helpdesk, forum with anonymous posting.
@@ -61,7 +62,7 @@ Programmatic video creation using Remotion — useful for agencies and businesse
 
 ## Technology Stack
 
-- **Frontend:** React, React Native (CLI), Astro, TypeScript, Tailwind CSS, GSAP, HTML/CSS/JS, Vite, EJS
+- **Frontend:** React, Next.js, React Native (CLI), Astro, TypeScript, Tailwind CSS, GSAP, HTML/CSS/JS, Vite, EJS
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL
 - **Mobile:** React Native CLI (Android & iOS)

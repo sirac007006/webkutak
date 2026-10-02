@@ -34,6 +34,15 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://webkutak.com/projekti/hotel-monte-cristo</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.com/hotel-monte-cristo.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://webkutak.com/projekti/its-webshop</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
