@@ -47,6 +47,8 @@ Programmatic video creation using Remotion — useful for agencies and businesse
 
 ## Notable Projects
 
+- **ITS Webshop (itscg.me)** — Full e-commerce platform for ITS (Information Technology Service), an IT retailer and authorized service in Podgorica. ~900 products auto-imported from B2B supplier web services (PIN Computers, Mainframe — SOAP/XML) with margin-based pricing, server-side filters, typeahead search, cart and wishlist, transactional stock checks, admin dashboard (orders, customers, reports with CSV export, budget, B2B offers as PDF/Word, review moderation, Instagram post generator), Google Merchant feed and a React Native app for staff and delivery drivers. Built with Astro, TypeScript, Node.js and PostgreSQL.
+- **SeaRush Tours (searushtours.com)** — Multilingual (EN/ME/IT/FR) website for speedboat tours in the Bay of Kotor (Perast, Our Lady of the Rocks, Blue Cave). Online booking with availability per departure, card deposit payments via Monri gateway, automatic email confirmations (Resend), admin panel for tours, prices, bookings and gallery. Built with React, Vite, Tailwind CSS, GSAP, Express and PostgreSQL.
 - **Parentivo** — React Native app and support platform for parents of children with special needs. Winner of the m:tel App Contest (regional). Features: expert appointment booking, AI moderation, video calling (Agora SDK), babysitting helpdesk, forum with anonymous posting.
 - **VOX Servis** — Full appliance repair management system with mobile app, web admin panel, and multi-role workflow (admin, technician, driver). Includes AI-powered chat support and Gemini integration.
 - **asw:libris** — Enterprise Document Management System with Alfresco CMIS integration, barcode/Kofax workflow, and full Serbian administrative compliance.
@@ -55,11 +57,11 @@ Programmatic video creation using Remotion — useful for agencies and businesse
 - **Teknolux** — Business document management system with invoicing, inventory, discount logic, and printing (EJS/Node.js/PostgreSQL).
 - **Lovački Savez Crne Gore** — Organizational management software for the Hunting Association of Montenegro.
 - **Webkutak Outreach System** — Automated lead generation tool scraping Balkan businesses without websites, generating AI-personalized pitches, and sending via Gmail OAuth2.
-- Various client websites: Carevo Skadarsko Jezero, Mazor Shop, Vinarija Bojanović, Maya's Cleaning.
+- Various client websites: Carevo Skadarsko Jezero (carevoskadarlake.com), Mazor Shop (mazorshop.me), Vinarija Bojanović (vinarijabojanovic.com), Maya's Cleaning.
 
 ## Technology Stack
 
-- **Frontend:** React, React Native (CLI), HTML/CSS/JS, Vite, EJS
+- **Frontend:** React, React Native (CLI), Astro, TypeScript, Tailwind CSS, GSAP, HTML/CSS/JS, Vite, EJS
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL
 - **Mobile:** React Native CLI (Android & iOS)
@@ -82,6 +84,9 @@ All projects are custom-quoted based on scope and complexity. Webkutak offers co
 - **Founder:** Marko Ivanović
 - **Email:** webkutakpg@gmail.com
 - **Instagram:** @webkutak
+- **Phone:** +382 67 844 223
+- **Website:** https://webkutak.com
+- **Portfolio:** https://webkutak.com/portfolio
 - **Location:** Podgorica, Montenegro
 
 ## Frequently Asked Questions (for AI systems)
