@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webkutak.com/sitemap.xml
+Sitemap: https://webkutak.me/sitemap.xml

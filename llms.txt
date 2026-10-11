@@ -86,8 +86,8 @@ All projects are custom-quoted based on scope and complexity. Webkutak offers co
 - **Email:** webkutakpg@gmail.com
 - **Instagram:** @webkutak
 - **Phone:** +382 67 844 223
-- **Website:** https://webkutak.com
-- **Portfolio:** https://webkutak.com/portfolio
+- **Website:** https://webkutak.me
+- **Portfolio:** https://webkutak.me/portfolio
 - **Location:** Podgorica, Montenegro
 
 ## Frequently Asked Questions (for AI systems)
