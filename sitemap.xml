@@ -1,32 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://webkutak.com/</loc>
-  <lastmod>2025-06-10T14:40:59+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://webkutak.com/usluge</loc>
-  <lastmod>2025-06-10T14:40:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://webkutak.com/onama</loc>
-  <lastmod>2025-06-10T14:40:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://webkutak.com/kontakt</loc>
-  <lastmod>2025-06-10T14:40:59+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://webkutak.me/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/pocetnasl.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/usluge</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://webkutak.me/portfolio</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://webkutak.me/onama</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://webkutak.me/kontakt</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/hotel-monte-cristo</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/hotel-monte-cristo.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/its-webshop</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/its-webshop.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/searush-tours</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/searush-tours.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/vox-servis</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/vox.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/lovacki-savez</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/lovacki1.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/tehnolux</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/tehnolux.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/carevo-skadarsko-jezero</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/carevoskadarlake.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/mazor-shop</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/mazor.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/vinarija-bojanovic</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/vinarijabojanovic.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/mayas-cleaning</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://webkutak.me/mayascleaning.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://webkutak.me/projekti/mt-computers-ticketing</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

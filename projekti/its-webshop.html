@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITS Webshop — online prodavnica IT opreme | WebKutak</title>
+    <meta name="description" content="Webshop za ITS Podgorica (itscg.me): ~900 artikala sa automatskim uvozom od dobavljača, korpa, porudžbine i admin panel. Astro, TypeScript i PostgreSQL.">
+    <link rel="canonical" href="https://webkutak.me/projekti/its-webshop">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="WebKutak">
+    <meta name="theme-color" content="#0a0f1e">
+    <meta name="geo.region" content="ME-16">
+    <meta name="geo.placename" content="Podgorica">
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="WebKutak">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="sr_ME">
+    <meta property="og:title" content="ITS Webshop — online prodavnica IT opreme | WebKutak">
+    <meta property="og:description" content="Webshop za ITS Podgorica (itscg.me): ~900 artikala sa automatskim uvozom od dobavljača, korpa, porudžbine i admin panel. Astro, TypeScript i PostgreSQL.">
+    <meta property="og:url" content="https://webkutak.me/projekti/its-webshop">
+    <meta property="og:image" content="https://webkutak.me/its-webshop.jpg">
+    <meta property="og:image:alt" content="ITS Webshop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ITS Webshop — online prodavnica IT opreme | WebKutak">
+    <meta name="twitter:description" content="Webshop za ITS Podgorica (itscg.me): ~900 artikala sa automatskim uvozom od dobavljača, korpa, porudžbine i admin panel. Astro, TypeScript i PostgreSQL.">
+    <meta name="twitter:image" content="https://webkutak.me/its-webshop.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://webkutak.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://webkutak.me/portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ITS Webshop",
+          "item": "https://webkutak.me/projekti/its-webshop"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ITS Webshop",
+      "url": "https://webkutak.me/projekti/its-webshop",
+      "description": "Webshop za ITS Podgorica (itscg.me): ~900 artikala sa automatskim uvozom od dobavljača, korpa, porudžbine i admin panel. Astro, TypeScript i PostgreSQL.",
+      "genre": "E-commerce",
+      "image": "https://webkutak.me/its-webshop.jpg",
+      "inLanguage": "en",
+      "creator": {
+        "@type": "Organization",
+        "@id": "https://webkutak.me/#organization",
+        "name": "WebKutak",
+        "url": "https://webkutak.me/"
+      },
+      "about": {
+        "@type": "WebSite",
+        "name": "ITS Webshop",
+        "url": "https://itscg.me"
+      }
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+    /* Project detail specific */
+    .project-hero { padding: 10rem 0 3rem; position: relative; overflow: hidden; }
+    .project-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(760px 340px at 85% 0%, rgba(74,123,255,0.08), transparent 62%); }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; position: relative; }
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--blue-primary); }
+    .breadcrumb span { color: var(--text-muted); }
+    .project-tag-hero { display: inline-block; padding: 0.35rem 0.85rem; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.2); border-radius: 6px; font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1rem; }
+    .project-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; position: relative; }
+    .project-hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 640px; line-height: 1.8; position: relative; margin-bottom: 2rem; }
+    .project-hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; position: relative; }
+    .project-image-section { margin-top: 3rem; }
+    .project-main-img { width: 100%; max-width: 800px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
+    @media(min-width:768px) { .detail-grid { grid-template-columns: 2fr 1fr; } }
+    .detail-main h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .detail-main p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+    .features-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+    .features-list li i { color: var(--blue-primary); margin-top: 0.3rem; font-size: 0.7rem; flex-shrink: 0; }
+    .sidebar-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-pill { padding: 0.4rem 1rem; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.15); border-radius: 100px; font-family: var(--font-display); font-size: 0.8rem; font-weight: 600; color: var(--blue-light); }
+    .info-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: 0.85rem; color: var(--text-muted); }
+    .info-value { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
+    .info-value a { color: var(--blue-primary); }
+    .info-value a:hover { color: var(--blue-light); }
+    .other-projects { margin-top: 2rem; }
+    .other-projects-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+    @media(min-width:640px) { .other-projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:1024px) { .other-projects-grid { grid-template-columns: repeat(3, 1fr); } }
+    .mini-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: all 0.3s ease; }
+    .mini-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .mini-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .mini-card p { font-size: 0.8rem; color: var(--text-muted); }
+    .mini-card .p-tech { font-size: 0.65rem; }
+    </style>
+</head>
+<body>
+<header id="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo"><img width="500" height="500" src="../logo.png" alt="WebKutak"></a>
+        <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../usluge.html">Services</a>
+            <a href="../portfolio.html" class="active">Portfolio</a>
+            <a href="../onama.html">About</a>
+        </nav>
+        <a href="../kontakt.html" class="nav-cta">Contact <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <div class="mobile-menu-nav">
+        <a href="../index.html">Home</a>
+        <a href="../usluge.html">Services</a>
+        <a href="../portfolio.html" class="active">Portfolio</a>
+        <a href="../onama.html">About</a>
+        <a href="../kontakt.html">Contact</a>
+    </div>
+    <a href="../kontakt.html" class="mobile-menu-cta">Contact us</a>
+</div>
+
+<section class="project-hero">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> <span>/</span>
+            <a href="../portfolio.html">Portfolio</a> <span>/</span>
+            <span>ITS Webshop</span>
+        </div>
+        <span class="project-tag-hero">E-commerce</span>
+        <h1>ITS Webshop — online IT equipment store</h1>
+        <p class="project-hero-desc">A complete webshop for the Podgorica IT store ITS — a catalog of nearly 900 products that fills itself from supplier feeds, a cart and checkout without registration, and an admin panel that runs the whole store.</p>
+        <div class="project-hero-actions">
+            <a href="https://itscg.me" target="_blank" rel="noopener" class="btn-primary">Visit site <i class="fas fa-external-link-alt" style="font-size:.8rem"></i></a>
+            <a href="../portfolio.html" class="btn-ghost"><i class="fas fa-arrow-left" style="font-size:.8rem"></i> Back to projects</a>
+        </div>
+        <div class="project-image-section reveal"><img fetchpriority="high" width="1080" height="1080" src="../its-webshop.webp" alt="ITS Webshop — online store for laptops and computers in Podgorica, itscg.me" class="project-main-img"></div>
+    </div>
+</section>
+
+<section class="section" style="padding-top:2rem">
+    <div class="container">
+        <div class="detail-grid">
+            <div class="detail-main reveal">
+                <h2>About the project</h2>
+                <p>ITS (Information Technology Service) is an IT store and authorized service center in Podgorica selling laptops, computers, monitors, phones and peripherals. They needed a webshop that doesn't require hand-entering hundreds of products and works as a real business tool, not just a storefront.</p>
+                <p>We built it from scratch in Astro with server-side rendering and a PostgreSQL database. The catalog is filled automatically through the suppliers' B2B services (PIN Computers and Mainframe) — products, purchase prices and availability arrive on their own, and the selling price is calculated from the margin the store sets. Prices, stock and shipping are always calculated on the server, so a price change in the admin applies immediately, even to a cart already sitting in someone's browser.</p>
+                <p>Beyond the store, ITS gets a complete back office: orders with statuses, customer records, sales reports, a store budget, quotes for businesses, review moderation and an Instagram post generator straight from the catalog. A React Native app for store staff and delivery drivers was built alongside the site.</p>
+
+                <h2>Features</h2>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Catalog of ~900 products with categories, groups and curated collections</li>
+                    <li><i class="fas fa-check-circle"></i> Server-side filters — a shared link instantly shows the exact result</li>
+                    <li><i class="fas fa-check-circle"></i> Real-time search suggestions (typeahead)</li>
+                    <li><i class="fas fa-check-circle"></i> Cart, wishlist and checkout as a guest or with an account</li>
+                    <li><i class="fas fa-check-circle"></i> Stock check and order creation in a single transaction — the last item can't be sold twice</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic supplier import (SOAP/XML B2B services) with margin calculation</li>
+                    <li><i class="fas fa-check-circle"></i> Admin dashboard: revenue, charts, orders, customers, products and suppliers</li>
+                    <li><i class="fas fa-check-circle"></i> Reports by period with CSV export (Excel compatible)</li>
+                    <li><i class="fas fa-check-circle"></i> Quotes for companies exported to PDF and Word</li>
+                    <li><i class="fas fa-check-circle"></i> Instagram post generator (1:1, 4:5, 9:16) from product data</li>
+                    <li><i class="fas fa-check-circle"></i> Google Merchant Center feed, dynamic sitemap and structured data for SEO</li>
+                    <li><i class="fas fa-check-circle"></i> React Native app for store staff and delivery drivers</li>
+                </ul>
+
+                <h2>Result</h2>
+                <p>ITS got an online store that practically maintains itself: products and prices update automatically, orders land straight in the admin panel, and products appear on Google Shopping through the Merchant feed. The site is live at itscg.me.</p>
+            </div>
+
+            <div class="detail-sidebar">
+                <div class="sidebar-card reveal">
+                    <h3>Technologies</h3>
+                    <div class="tech-list">
+                        <span class="tech-pill">Astro</span>
+                        <span class="tech-pill">TypeScript</span>
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">React Native</span>
+                        <span class="tech-pill">SOAP / XML</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-card reveal">
+                    <h3>Details</h3>
+                    <div class="info-row"><span class="info-label">Category</span><span class="info-value">E-commerce</span></div>
+                    <div class="info-row"><span class="info-label">Client</span><span class="info-value">ITS — Information Technology Service</span></div>
+                    <div class="info-row"><span class="info-label">Location</span><span class="info-value">Podgorica, Montenegro</span></div>
+                    <div class="info-row"><span class="info-label">Website</span><span class="info-value"><a href="https://itscg.me" target="_blank" rel="noopener">itscg.me</a></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="other-projects reveal">
+            <h2 class="section-title">Other projects</h2>
+            <div class="other-projects-grid">
+                <a href="searush-tours.html" class="mini-card">
+                    <h4>SeaRush Tours</h4>
+                    <p>Tourism · Bookings</p>
+                </a>
+                <a href="mazor-shop.html" class="mini-card">
+                    <h4>Mazor Shop</h4>
+                    <p>E-commerce</p>
+                </a>
+                <a href="vox-servis.html" class="mini-card">
+                    <h4>VOX Servis</h4>
+                    <p>Mobile App</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo"><img loading="lazy" decoding="async" width="500" height="500" src="../logo.png" alt="WebKutak"></a>
+                <p>We craft digital solutions that help businesses grow and thrive in the modern digital world.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/webkutak/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+38267844223" aria-label="Call us"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:webkutakpg@gmail.com" aria-label="Send an email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="../index.html">Home</a></li><li><a href="../usluge.html">Services</a></li><li><a href="../portfolio.html">Portfolio</a></li><li><a href="../onama.html">About</a></li><li><a href="../kontakt.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Services</h4><ul><li><a href="../usluge.html">Web Design</a></li><li><a href="../usluge.html">Web Development</a></li><li><a href="../usluge.html">Mobile Apps</a></li><li><a href="../usluge.html">E-commerce</a></li><li><a href="../usluge.html">Business Software</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+38267844223">+382 67 844 223</a></li><li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:webkutakpg@gmail.com">webkutakpg@gmail.com</a></li><li class="contact-item"><i class="fas fa-map-marker-alt"></i> Podgorica, Montenegro</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; <span id="year"></span> WebKutak. All rights reserved.</p></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+const t=document.getElementById('mobileToggle'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay'),c=document.getElementById('mobileClose');
+t.addEventListener('click',()=>{m.classList.add('open');o.classList.add('open')});
+c.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+o.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

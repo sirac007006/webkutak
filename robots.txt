@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
-Disallow: /cgi-bin/
-Sitemap: https://webkutak.com/sitemap.xml
+Allow: /
+
+Sitemap: https://webkutak.me/sitemap.xml

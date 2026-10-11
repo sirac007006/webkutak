@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaRush Tours — sajt za ture gliserom u Kotoru | WebKutak</title>
+    <meta name="description" content="Višejezični sajt za SeaRush Tours iz Kotora: ture gliserom po Boki, online rezervacija, plaćanje karticom (Monri) i admin panel. React, Express, PostgreSQL.">
+    <link rel="canonical" href="https://webkutak.me/projekti/searush-tours">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="WebKutak">
+    <meta name="theme-color" content="#0a0f1e">
+    <meta name="geo.region" content="ME-16">
+    <meta name="geo.placename" content="Podgorica">
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="WebKutak">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="sr_ME">
+    <meta property="og:title" content="SeaRush Tours — sajt za ture gliserom u Kotoru | WebKutak">
+    <meta property="og:description" content="Višejezični sajt za SeaRush Tours iz Kotora: ture gliserom po Boki, online rezervacija, plaćanje karticom (Monri) i admin panel. React, Express, PostgreSQL.">
+    <meta property="og:url" content="https://webkutak.me/projekti/searush-tours">
+    <meta property="og:image" content="https://webkutak.me/searush-tours.jpg">
+    <meta property="og:image:alt" content="SeaRush Tours">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeaRush Tours — sajt za ture gliserom u Kotoru | WebKutak">
+    <meta name="twitter:description" content="Višejezični sajt za SeaRush Tours iz Kotora: ture gliserom po Boki, online rezervacija, plaćanje karticom (Monri) i admin panel. React, Express, PostgreSQL.">
+    <meta name="twitter:image" content="https://webkutak.me/searush-tours.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://webkutak.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://webkutak.me/portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SeaRush Tours",
+          "item": "https://webkutak.me/projekti/searush-tours"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "SeaRush Tours",
+      "url": "https://webkutak.me/projekti/searush-tours",
+      "description": "Višejezični sajt za SeaRush Tours iz Kotora: ture gliserom po Boki, online rezervacija, plaćanje karticom (Monri) i admin panel. React, Express, PostgreSQL.",
+      "genre": "Turizam",
+      "image": "https://webkutak.me/searush-tours.jpg",
+      "inLanguage": "en",
+      "creator": {
+        "@type": "Organization",
+        "@id": "https://webkutak.me/#organization",
+        "name": "WebKutak",
+        "url": "https://webkutak.me/"
+      },
+      "about": {
+        "@type": "WebSite",
+        "name": "SeaRush Tours",
+        "url": "https://searushtours.com"
+      }
+    }
+  ]
+}
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+    /* Project detail specific */
+    .project-hero { padding: 10rem 0 3rem; position: relative; overflow: hidden; }
+    .project-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(760px 340px at 85% 0%, rgba(74,123,255,0.08), transparent 62%); }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; position: relative; }
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--blue-primary); }
+    .breadcrumb span { color: var(--text-muted); }
+    .project-tag-hero { display: inline-block; padding: 0.35rem 0.85rem; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.2); border-radius: 6px; font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1rem; }
+    .project-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; position: relative; }
+    .project-hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 640px; line-height: 1.8; position: relative; margin-bottom: 2rem; }
+    .project-hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; position: relative; }
+    .project-image-section { margin-top: 3rem; }
+    .project-main-img { width: 100%; max-width: 800px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
+    @media(min-width:768px) { .detail-grid { grid-template-columns: 2fr 1fr; } }
+    .detail-main h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .detail-main p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+    .features-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .features-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+    .features-list li i { color: var(--blue-primary); margin-top: 0.3rem; font-size: 0.7rem; flex-shrink: 0; }
+    .sidebar-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-pill { padding: 0.4rem 1rem; background: var(--blue-glow); border: 1px solid rgba(74,123,255,0.15); border-radius: 100px; font-family: var(--font-display); font-size: 0.8rem; font-weight: 600; color: var(--blue-light); }
+    .info-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: 0.85rem; color: var(--text-muted); }
+    .info-value { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
+    .info-value a { color: var(--blue-primary); }
+    .info-value a:hover { color: var(--blue-light); }
+    .other-projects { margin-top: 2rem; }
+    .other-projects-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+    @media(min-width:640px) { .other-projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:1024px) { .other-projects-grid { grid-template-columns: repeat(3, 1fr); } }
+    .mini-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: all 0.3s ease; }
+    .mini-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .mini-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .mini-card p { font-size: 0.8rem; color: var(--text-muted); }
+    .mini-card .p-tech { font-size: 0.65rem; }
+    </style>
+</head>
+<body>
+<header id="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo"><img width="500" height="500" src="../logo.png" alt="WebKutak"></a>
+        <nav class="nav-desktop" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../usluge.html">Services</a>
+            <a href="../portfolio.html" class="active">Portfolio</a>
+            <a href="../onama.html">About</a>
+        </nav>
+        <a href="../kontakt.html" class="nav-cta">Contact <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <div class="mobile-menu-nav">
+        <a href="../index.html">Home</a>
+        <a href="../usluge.html">Services</a>
+        <a href="../portfolio.html" class="active">Portfolio</a>
+        <a href="../onama.html">About</a>
+        <a href="../kontakt.html">Contact</a>
+    </div>
+    <a href="../kontakt.html" class="mobile-menu-cta">Contact us</a>
+</div>
+
+<section class="project-hero">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> <span>/</span>
+            <a href="../portfolio.html">Portfolio</a> <span>/</span>
+            <span>SeaRush Tours</span>
+        </div>
+        <span class="project-tag-hero">Tourism</span>
+        <h1>SeaRush Tours — speedboat tours in the Bay of Kotor</h1>
+        <p class="project-hero-desc">A multilingual tourism website with online booking and card deposit payments for SeaRush — private and group speedboat tours through the Bay of Kotor to Perast, Our Lady of the Rocks and the Blue Cave.</p>
+        <div class="project-hero-actions">
+            <a href="https://searushtours.com" target="_blank" rel="noopener" class="btn-primary">Visit site <i class="fas fa-external-link-alt" style="font-size:.8rem"></i></a>
+            <a href="../portfolio.html" class="btn-ghost"><i class="fas fa-arrow-left" style="font-size:.8rem"></i> Back to projects</a>
+        </div>
+        <div class="project-image-section reveal"><img fetchpriority="high" width="1080" height="1080" src="../searush-tours.webp" alt="SeaRush Tours — private speedboat tours website, Kotor, searushtours.com" class="project-main-img"></div>
+    </div>
+</section>
+
+<section class="section" style="padding-top:2rem">
+    <div class="container">
+        <div class="detail-grid">
+            <div class="detail-main reveal">
+                <h2>About the project</h2>
+                <p>SeaRush runs speedboat tours from Kotor — sunset group tours to Perast and Our Lady of the Rocks, plus private and exclusive tours to the Blue Cave. The goal was a site that feels as premium as the experience itself, and that a tourist on a phone can go through from inspiration to a paid booking in a few minutes.</p>
+                <p>The frontend is built in React with Tailwind and GSAP animations — a large hero with aerial footage, pages for tours, attractions, destinations, a gallery and reviews. The site is available in four languages (English, Montenegrin, Italian and French), since foreign tourists are the main audience.</p>
+                <p>Behind it is an Express + PostgreSQL backend: availability checks per departure, bookings, online card deposit payments through the Monri gateway and automatic emails to both the guest and the owner. Through the admin panel the owner edits tours, prices, departures, images and the gallery on their own — no developer and no rebuild needed.</p>
+
+                <h2>Features</h2>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 5 tours (group, private and exclusive) with detailed pages</li>
+                    <li><i class="fas fa-check-circle"></i> Online booking with availability checks per departure time</li>
+                    <li><i class="fas fa-check-circle"></i> Online card deposit payments through the Monri payment gateway</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic booking confirmations to the guest and new-booking alerts to the owner</li>
+                    <li><i class="fas fa-check-circle"></i> Multilingual: EN, ME, IT and FR (i18next)</li>
+                    <li><i class="fas fa-check-circle"></i> Attraction and destination pages — Perast, Our Lady of the Rocks, Blue Cave…</li>
+                    <li><i class="fas fa-check-circle"></i> Gallery and guest reviews</li>
+                    <li><i class="fas fa-check-circle"></i> Admin panel: tours, prices, departures, bookings and image uploads</li>
+                    <li><i class="fas fa-check-circle"></i> Quick WhatsApp contact — “Help us choose”</li>
+                    <li><i class="fas fa-check-circle"></i> GSAP animations and a premium, mobile-first design</li>
+                </ul>
+
+                <h2>Result</h2>
+                <p>SeaRush now sells tours directly, without intermediaries or booking-platform commissions: the guest picks a tour, sees free slots, pays a deposit by card and instantly gets an email confirmation. The site is live at searushtours.com.</p>
+            </div>
+
+            <div class="detail-sidebar">
+                <div class="sidebar-card reveal">
+                    <h3>Technologies</h3>
+                    <div class="tech-list">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Vite</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                        <span class="tech-pill">GSAP</span>
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">i18next</span>
+                        <span class="tech-pill">Monri</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-card reveal">
+                    <h3>Details</h3>
+                    <div class="info-row"><span class="info-label">Category</span><span class="info-value">Tourism</span></div>
+                    <div class="info-row"><span class="info-label">Client</span><span class="info-value">SeaRush Tours</span></div>
+                    <div class="info-row"><span class="info-label">Location</span><span class="info-value">Kotor, Montenegro</span></div>
+                    <div class="info-row"><span class="info-label">Website</span><span class="info-value"><a href="https://searushtours.com" target="_blank" rel="noopener">searushtours.com</a></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="other-projects reveal">
+            <h2 class="section-title">Other projects</h2>
+            <div class="other-projects-grid">
+                <a href="its-webshop.html" class="mini-card">
+                    <h4>ITS Webshop</h4>
+                    <p>E-commerce</p>
+                </a>
+                <a href="carevo-skadarsko-jezero.html" class="mini-card">
+                    <h4>Carevo Skadarsko Jezero</h4>
+                    <p>Tourism</p>
+                </a>
+                <a href="vinarija-bojanovic.html" class="mini-card">
+                    <h4>Vinarija Bojanović</h4>
+                    <p>Winery</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo"><img loading="lazy" decoding="async" width="500" height="500" src="../logo.png" alt="WebKutak"></a>
+                <p>We craft digital solutions that help businesses grow and thrive in the modern digital world.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/webkutak/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+38267844223" aria-label="Call us"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:webkutakpg@gmail.com" aria-label="Send an email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="../index.html">Home</a></li><li><a href="../usluge.html">Services</a></li><li><a href="../portfolio.html">Portfolio</a></li><li><a href="../onama.html">About</a></li><li><a href="../kontakt.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Services</h4><ul><li><a href="../usluge.html">Web Design</a></li><li><a href="../usluge.html">Web Development</a></li><li><a href="../usluge.html">Mobile Apps</a></li><li><a href="../usluge.html">E-commerce</a></li><li><a href="../usluge.html">Business Software</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+38267844223">+382 67 844 223</a></li><li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:webkutakpg@gmail.com">webkutakpg@gmail.com</a></li><li class="contact-item"><i class="fas fa-map-marker-alt"></i> Podgorica, Montenegro</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; <span id="year"></span> WebKutak. All rights reserved.</p></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+const t=document.getElementById('mobileToggle'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay'),c=document.getElementById('mobileClose');
+t.addEventListener('click',()=>{m.classList.add('open');o.classList.add('open')});
+c.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+o.addEventListener('click',()=>{m.classList.remove('open');o.classList.remove('open')});
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
